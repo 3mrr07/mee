@@ -153,7 +153,7 @@ const TRANSLATIONS = {
   },
 
   en: {
-    "nav.brand": "Engineering College",
+    "nav.brand": "Mechanical & Electrical Engineering",
     "page.title.home": "Your Academic Destination | Faculty of Mechanical & Electrical Engineering",
     "page.title.guide": "How to Choose Your Major? | Engineering Faculty",
     "page.title.union": "Student Union | Engineering Faculty",
