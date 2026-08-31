@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A433A">
+  <title data-page-title="page.title.guide">كيف تختار تخصصك؟ | كلية الهندسة</title>
+  <meta name="description" content="دليلك لاختيار التخصص الهندسي المناسب - مقارنة بين الأفرع ونصائح عملية">
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body data-page="guide">
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="/" class="topbar-logo">
+        <div class="logo-placeholder">H</div>
+        <span data-i18n="nav.brand">كلية الهندسة</span>
+      </a>
+      <div class="topbar-actions">
+        <button id="theme-toggle" class="topbar-btn" onclick="toggleTheme()" aria-label="الوضع الليلي">&#9790;</button>
+        <button id="lang-toggle" class="topbar-btn lang-toggle" onclick="toggleLanguage()" data-i18n="lang.label">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Header -->
+  <section class="dept-header" style="--dept-color: var(--color-primary)">
+    <div class="container" style="position:relative;z-index:1">
+      <a href="/" class="back-btn">&#8594; <span data-i18n="btn.back">العودة للرئيسية</span></a>
+      <div class="dept-header-icon" style="--dept-color: var(--color-primary)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg></div>
+      <h1 data-i18n="guide.title">كيف تختار تخصصك؟</h1>
+      <p data-i18n="guide.subtitle"></p>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="section" style="padding-top:var(--space-2xl)">
+    <div class="container">
+
+      <div class="info-card">
+        <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> <span data-i18n="guide.step1">اعرف نفسك أولاً</span></h3>
+        <p class="mb-lg" style="color:var(--text-secondary);line-height:2" data-i18n="guide.step1intro"></p>
+        <div class="info-list">
+          <div class="info-list-item">
+            <div class="info-list-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div>
+              <strong data-i18n="guide.q1">ما الذي يثير حماسك؟</strong>
+              <p style="color:var(--text-secondary);font-size:0.875rem" data-i18n="guide.q1text"></p>
+            </div>
+          </div>
+          <div class="info-list-item">
+            <div class="info-list-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div>
+              <strong data-i18n="guide.q2">عملي أم نظري؟</strong>
+              <p style="color:var(--text-secondary);font-size:0.875rem" data-i18n="guide.q2text"></p>
+            </div>
+          </div>
+          <div class="info-list-item">
+            <div class="info-list-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div>
+              <strong data-i18n="guide.q3">أين تتخيّل نفسك؟</strong>
+              <p style="color:var(--text-secondary);font-size:0.875rem" data-i18n="guide.q3text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison -->
+      <div class="section-header mt-xl">
+        <span class="section-label" data-i18n="guide.compare.label">مقارنة سريعة</span>
+        <h2 data-i18n="guide.compare.title">الأفرع السبعة باختصار</h2>
+      </div>
+
+      <div id="guide-comparison" class="comparison-grid"></div>
+
+      <!-- Tips -->
+      <div class="info-card mt-xl">
+        <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> <span data-i18n="guide.tips">نصائح أخيرة</span></h3>
+        <div class="info-list">
+          <div class="info-list-item">
+            <div class="info-list-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <strong data-i18n="guide.t1">لا تختار باسم الآخرين</strong>
+              <p style="color:var(--text-secondary);font-size:0.875rem" data-i18n="guide.t1text"></p>
+            </div>
+          </div>
+          <div class="info-list-item">
+            <div class="info-list-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <strong data-i18n="guide.t2">اسأل الخريجين</strong>
+              <p style="color:var(--text-secondary);font-size:0.875rem" data-i18n="guide.t2text"></p>
+            </div>
+          </div>
+          <div class="info-list-item">
+            <div class="info-list-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <strong data-i18n="guide.t3">لا تخف من التغيير</strong>
+              <p style="color:var(--text-secondary);font-size:0.875rem" data-i18n="guide.t3text"></p>
+            </div>
+          </div>
+          <div class="info-list-item">
+            <div class="info-list-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <strong data-i18n="guide.t4">فكر بالمستقبل</strong>
+              <p style="color:var(--text-secondary);font-size:0.875rem" data-i18n="guide.t4text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer.line1">ملتقى وجهتك الأكاديمية 2026 - كلية الهندسة الميكانيكية والكهربائية - جامعة حمص</p>
+      <p class="mt-sm" style="font-size:0.75rem" data-i18n="footer.line2">إعداد: اتحاد طلبة سوريا - فرع حمص</p>
+    </div>
+  </footer>
+
+  <script src="/js/site-data.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A433A">
+  <title data-page-title="page.title.union">الهيئة الطلابية | كلية الهندسة</title>
+  <meta name="description" content="تعرف على الهيئة الطلابية - دورها وخدماتها وطريقة الانضمام">
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body data-page="union">
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="/" class="topbar-logo">
+        <div class="logo-placeholder">H</div>
+        <span data-i18n="nav.brand">كلية الهندسة</span>
+      </a>
+      <div class="topbar-actions">
+        <button id="theme-toggle" class="topbar-btn" onclick="toggleTheme()" aria-label="الوضع الليلي">&#9790;</button>
+        <button id="lang-toggle" class="topbar-btn lang-toggle" onclick="toggleLanguage()" data-i18n="lang.label">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Header -->
+  <section class="dept-header" style="--dept-color: var(--color-primary)">
+    <div class="container" style="position:relative;z-index:1">
+      <a href="/" class="back-btn">&#8594; <span data-i18n="btn.back">العودة للرئيسية</span></a>
+      <div class="dept-header-icon" style="--dept-color: var(--color-primary)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h20"/><path d="M5 10v11M19 10v11M10 10v11M14 10v11"/><path d="M12 2L3 7h18L12 2z"/></svg></div>
+      <h1 data-i18n="union.title">الهيئة الطلابية</h1>
+      <p data-i18n="union.subtitle">تمثّل الطالب وتكون صوته داخل الكلية والجامعة — أنشطة، خدمات وتمثيل</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section" style="padding-top:var(--space-2xl)">
+    <div class="container">
+      <div class="info-card">
+        <h3 data-i18n="union.whatIs">ما هي الهيئة الطلابية؟</h3>
+        <p style="color:var(--text-secondary);line-height:2" data-i18n="union.whatIsText"></p>
+      </div>
+
+      <div class="info-card">
+        <h3 data-i18n="union.services">خدماتها ودورها</h3>
+        <div id="union-list" class="info-list"></div>
+      </div>
+
+      <div class="info-card">
+        <h3 data-i18n="union.join">كيف تنضم؟</h3>
+        <div id="union-join" class="info-list"></div>
+      </div>
+
+      <div class="info-card text-center">
+        <h3 data-i18n="union.contact">تواصل معنا</h3>
+        <p class="mb-xl" style="color:var(--text-secondary)" data-i18n="union.contactText"></p>
+        <div style="width:120px;height:120px;border-radius:50%;background:var(--bg-primary);border:2px dashed var(--border-color);margin:0 auto;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:0.8rem" data-i18n="placeholder.logo">
+          شعار الهيئة
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer.line1">ملتقى وجهتك الأكاديمية 2026 - كلية الهندسة الميكانيكية والكهربائية - جامعة حمص</p>
+      <p class="mt-sm" style="font-size:0.75rem" data-i18n="footer.line2">إعداد: اتحاد طلبة سوريا - فرع حمص</p>
+    </div>
+  </footer>
+
+  <script src="/js/site-data.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

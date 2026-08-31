@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A433A">
+  <title>تخصص | كلية الهندسة الميكانيكية والكهربائية</title>
+  <meta name="description" content="التعريف بالتخصص والخطة الدراسية ومجالات العمل - جامعة حمص">
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body data-page="department" data-department="tahakum">
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="/" class="topbar-logo">
+        <div class="logo-placeholder">H</div>
+        <span data-i18n="nav.brand">كلية الهندسة</span>
+      </a>
+      <div class="topbar-actions">
+        <button id="theme-toggle" class="topbar-btn" onclick="toggleTheme()" aria-label="الوضع الليلي">&#9790;</button>
+        <button id="lang-toggle" class="topbar-btn lang-toggle" onclick="toggleLanguage()" data-i18n="lang.label">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Department Header -->
+  <section class="dept-header" id="dept-header">
+    <div class="container" style="position:relative;z-index:1">
+      <a href="/" class="back-btn">&#8594; <span data-i18n="btn.back">العودة للرئيسية</span></a>
+      <div class="dept-header-icon" id="dept-header-icon"></div>
+      <h1 id="dept-header-title"></h1>
+      <p id="dept-header-tag"></p>
+    </div>
+  </section>
+
+  <!-- Overview + Careers -->
+  <section class="section" style="padding-top:var(--space-2xl)">
+    <div class="container">
+      <div class="info-card">
+        <h3 id="dept-about-title">ما هو هذا الفرع؟</h3>
+        <p id="dept-about-text" style="color:var(--text-secondary);line-height:2"></p>
+      </div>
+
+      <div class="info-card">
+        <h3 id="dept-careers-title">مجالات العمل</h3>
+        <div id="dept-careers-list" class="info-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Study Plan -->
+  <section class="section" style="background:var(--bg-secondary)">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" data-i18n="dept.study.label">الخطة الدراسية</span>
+        <h2 data-i18n="dept.study.title">5 سنوات - 10 فصول</h2>
+        <p><span data-i18n="dept.study.subtitle">الخطة الدراسية الكاملة لفرع</span> <span id="dept-study-name"></span></p>
+      </div>
+      <div id="study-plan"></div>
+      <div class="info-card mt-xl text-center">
+        <p style="color:var(--text-muted);font-size:0.875rem" data-i18n="dept.note">الخطة أدناه تقريبية لعرض المواد العامة — القائمة الرسمية الكاملة تصلك من ركن الكلية أو مكتب التعليم.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section text-center">
+    <div class="container">
+      <h2 data-i18n="dept.cta.title">هل تريد أن تعرف أكثر؟</h2>
+      <p class="mb-xl" style="color:var(--text-secondary);font-size:var(--text-lg)" data-i18n="dept.cta.text">تواصل مع طلاب الفرع في الملتقى أو زر ركن الكلية في البهو</p>
+      <a href="/" class="btn btn-primary" data-i18n="dept.cta.btn">العودة للرئيسية</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer.line1">ملتقى وجهتك الأكاديمية 2026 - كلية الهندسة الميكانيكية والكهربائية - جامعة حمص</p>
+      <p class="mt-sm" style="font-size:0.75rem" data-i18n="footer.line2">إعداد: اتحاد طلبة سوريا - فرع حمص</p>
+    </div>
+  </footer>
+
+  <script src="/js/site-data.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
