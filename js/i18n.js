@@ -61,6 +61,10 @@ function applyLanguage() {
 }
 
 /* ---------- الرئيسية: كروت الأفرع ---------- */
+function deptUrl(slug) {
+  const inDept = location.pathname.includes('/departments/');
+  return (inDept ? '../departments/' : './departments/') + slug + '.html';
+}
 function renderDeptCards() {
   const grid = document.getElementById('dept-cards');
   if (!grid) return;
@@ -68,7 +72,7 @@ function renderDeptCards() {
   DEPARTMENTS.forEach((d, idx) => {
     const a = document.createElement('a');
     a.className = 'dept-card animate-in';
-    a.href = '/departments/' + d.slug + '.html';
+    a.href = deptUrl(d.slug);
     a.style.setProperty('--dept-color', d.color);
     a.innerHTML =
       '<div class="dept-card-icon">' + d.icon + '</div>' +
@@ -173,7 +177,7 @@ function renderGuideComparison() {
     card.innerHTML =
       '<h4>' + d.title[lang()] + '</h4>' +
       '<ul class="comparison-list">' + listHtml + '</ul>' +
-      '<a href="/departments/' + d.slug + '.html" class="dept-card-link">' +
+      '<a href="' + deptUrl(d.slug) + '" class="dept-card-link">' +
       tr('guide.compare.link') + ' <span class="dept-card-arrow">&#8592;</span></a>';
     grid.appendChild(card);
   });
