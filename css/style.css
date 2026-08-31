@@ -575,6 +575,11 @@ p { color: var(--text-secondary); }
   border-color: color-mix(in srgb, var(--color-primary) 38%, transparent);
   box-shadow: 0 14px 34px -12px rgba(0, 0, 0, 0.32), 0 0 24px -10px color-mix(in srgb, var(--color-primary) 42%, transparent);
 }
+.year-column:active {
+  transform: translateY(-2px) scale(0.98);
+  border-color: color-mix(in srgb, var(--color-primary) 38%, transparent);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.3), 0 0 16px -6px color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
 .year-header {
   padding: var(--space-md) var(--space-lg);
   background: color-mix(in srgb, var(--color-primary) 9%, transparent);
@@ -611,7 +616,14 @@ p { color: var(--text-secondary); }
   color: var(--text-primary);
   transform: translateX(-2px);
 }
+.course-item:active {
+  background: var(--bg-card-hover);
+  border-color: color-mix(in srgb, var(--color-primary) 24%, transparent);
+  color: var(--text-primary);
+  transform: scale(0.98);
+}
 [dir="ltr"] .course-item:hover { transform: translateX(2px); }
+[dir="ltr"] .course-item:active { transform: scale(0.98); }
 
 @media (max-width: 1024px) {
   .study-plan-years { grid-template-columns: 1fr; gap: var(--space-md); }
