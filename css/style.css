@@ -798,13 +798,14 @@ p { color: var(--text-secondary); }
 
 /* --- LTR OVERRIDES --- */
 [dir="ltr"] .hero-cta { flex-direction: row-reverse; }
-[dir="ltr"] .info-list-item { flex-direction: row-reverse; }
 [dir="ltr"] .topbar-inner { flex-direction: row-reverse; }
 [dir="ltr"] .back-btn { flex-direction: row-reverse; }
 [dir="ltr"] .text-right { text-align: left; }
 [dir="ltr"] body { text-align: left; }
 [dir="ltr"] .dept-card-arrow { transform: rotate(0deg); }
 [dir="ltr"] .dept-card:hover .dept-card-arrow { transform: translateX(3px); }
+[dir="ltr"] .info-card { text-align: left; }
+[dir="ltr"] .info-card h3 { justify-content: flex-start; }
 
 /* --- PRINT --- */
 @media print {
