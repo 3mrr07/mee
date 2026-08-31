@@ -1,27 +1,27 @@
 const CACHE_NAME = 'hme-v5';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/departments/qowa.html',
-  '/departments/tasmim.html',
-  '/departments/taqa.html',
-  '/departments/electron.html',
-  '/departments/tahakum.html',
-  '/departments/mechatronics.html',
-  '/departments/maaden.html',
-  '/union.html',
-  '/robotics.html',
-  '/guide.html',
-  '/css/style.css',
-  '/js/site-data.js',
-  '/js/translations.js',
-  '/js/i18n.js',
-  '/js/main.js',
-  '/offline.html',
-  '/manifest.json',
-  '/img/favicon.svg',
-  '/img/icon-192.png',
-  '/img/icon-512.png'
+  './',
+  './index.html',
+  './departments/qowa.html',
+  './departments/tasmim.html',
+  './departments/taqa.html',
+  './departments/electron.html',
+  './departments/tahakum.html',
+  './departments/mechatronics.html',
+  './departments/maaden.html',
+  './union.html',
+  './robotics.html',
+  './guide.html',
+  './css/style.css',
+  './js/site-data.js',
+  './js/translations.js',
+  './js/i18n.js',
+  './js/main.js',
+  './offline.html',
+  './manifest.json',
+  './img/favicon.svg',
+  './img/icon-192.png',
+  './img/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -57,7 +57,7 @@ self.addEventListener('fetch', (event) => {
           }
           return response;
         })
-        .catch(() => caches.match('/offline.html'));
+        .catch(() => caches.match('./offline.html'));
     })
   );
 });

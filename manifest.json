@@ -2,7 +2,7 @@
   "name": "كلية الهندسة الميكانيكية والكهربائية - جامعة حمص",
   "short_name": "HME",
   "description": "موقع التعريف بكلية الهندسة الميكانيكية والكهربائية - ملتقى وجهتك الأكاديمية 2026",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#1A433A",
   "theme_color": "#E64B3B",
