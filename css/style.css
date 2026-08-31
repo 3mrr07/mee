@@ -426,23 +426,18 @@ p { color: var(--text-secondary); }
   box-shadow: var(--shadow-sm);
 }
 .dept-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, var(--dept-color, var(--color-primary)), transparent);
-  opacity: 0;
-  transition: opacity var(--transition-normal);
+  display: none;
 }
 .dept-card:hover {
   transform: translateY(-7px);
-  border-color: color-mix(in srgb, var(--color-primary) 42%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 55%, transparent);
   background: var(--bg-card-hover);
   box-shadow:
-    0 20px 48px -14px rgba(0, 0, 0, 0.38),
-    0 0 34px -8px color-mix(in srgb, var(--color-primary) 50%, transparent);
+    0 24px 56px -12px rgba(0, 0, 0, 0.42),
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 25%, transparent),
+    0 0 56px 2px color-mix(in srgb, var(--color-primary) 45%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-primary) 12%, transparent);
 }
-.dept-card:hover::before { opacity: 1; }
 .dept-card:active { transform: translateY(-2px) scale(0.99); }
 .dept-card:focus-visible,
 .info-card:focus-visible,
