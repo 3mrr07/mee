@@ -372,6 +372,7 @@ function showQuizResult() {
       '<div class="quiz-result-dept">' + sorted[0].name + '</div>' +
       '<div class="quiz-result-pct">' + (totalSelections > 0 ? Math.round((maxScore / totalSelections) * 100) : 0) + '% ' + tr('quiz.match') + '</div>' +
       '<p class="quiz-result-desc">' + (topDept ? topDept.tagline[L] : '') + '</p>' +
+      '<div class="quiz-result-disclaimer">' + tr('quiz.disclaimer') + '</div>' +
       '<div class="quiz-result-bars">' + barsHtml + '</div>' +
       '<div class="quiz-result-actions">' +
         (topDept ? '<a href="' + deptUrl(topDept.slug) + '" class="btn btn-primary">' + tr('quiz.viewDept') + '</a>' : '') +

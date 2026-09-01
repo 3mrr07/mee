@@ -979,6 +979,18 @@ p { color: var(--text-secondary); }
 .quiz-bar-pct { width: 40px; font-size: var(--text-xs); color: var(--text-muted); font-weight: 600; text-align: left; }
 [dir="ltr"] .quiz-bar-pct { text-align: right; }
 .quiz-result-actions { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.quiz-result-disclaimer {
+  max-width: 560px;
+  margin: 0 auto var(--space-xl);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, #F59E0B 8%, transparent);
+  border: 1px solid color-mix(in srgb, #F59E0B 25%, transparent);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  text-align: center;
+}
 
 @media (max-width: 768px) {
   .quiz-question-text { font-size: var(--text-xl); }

@@ -157,6 +157,7 @@ const TRANSLATIONS = {
     "quiz.match": "تطابق",
     "quiz.viewDept": "شاهد الفرع",
     "quiz.share": "شارك نتيجتك",
+    "quiz.disclaimer": "هذه النتيجة تقريبية وليس لها طابع رسمي. الهدف هو مساعدتك على التفكير والتعرف على اتجاهاتك — تأكد من البحث أكثر عن شغفك ورغباتك والتحدث مع الخريجين واختيار الفرع الذي يسعدك ويحقق طموحاتك.",
 
     // مقارنة الأفرع
     "page.title.compare": "قارن الأفرع | كلية الهندسة",
@@ -327,6 +328,7 @@ const TRANSLATIONS = {
     "quiz.match": "match",
     "quiz.viewDept": "View department",
     "quiz.share": "Share your result",
+    "quiz.disclaimer": "This result is an estimate and has no official status. It is meant to help you think about your direction — make sure to research more about your passion, talk to graduates, and choose the branch that makes you happy and fulfils your ambitions.",
 
     // Compare
     "page.title.compare": "Compare Departments | Engineering Faculty",
