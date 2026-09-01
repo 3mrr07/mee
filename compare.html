@@ -49,16 +49,24 @@
       <div class="compare-selectors">
         <div class="compare-select-wrap">
           <label data-i18n="compare.select1">اختر الفرع الأول</label>
-          <select id="compare-select-1" class="compare-select" onchange="renderComparison()">
-            <option value="">—</option>
-          </select>
+          <div class="custom-select" id="compare-custom-1" data-value="">
+            <div class="custom-select-trigger" onclick="toggleCustomSelect(1)">
+              <span class="custom-select-value" data-i18n="compare.select1">اختر الفرع الأول</span>
+              <span class="custom-select-arrow">&#9662;</span>
+            </div>
+            <div class="custom-select-dropdown" id="compare-dropdown-1"></div>
+          </div>
         </div>
         <div class="compare-vs"><div class="compare-vs-circle">VS</div></div>
         <div class="compare-select-wrap">
           <label data-i18n="compare.select2">اختر الفرع الثاني</label>
-          <select id="compare-select-2" class="compare-select" onchange="renderComparison()">
-            <option value="">—</option>
-          </select>
+          <div class="custom-select" id="compare-custom-2" data-value="">
+            <div class="custom-select-trigger" onclick="toggleCustomSelect(2)">
+              <span class="custom-select-value" data-i18n="compare.select2">اختر الفرع الثاني</span>
+              <span class="custom-select-arrow">&#9662;</span>
+            </div>
+            <div class="custom-select-dropdown" id="compare-dropdown-2"></div>
+          </div>
         </div>
       </div>
 

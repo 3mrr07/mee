@@ -440,29 +440,61 @@ function retakeQuiz() {
 /* ============================================================
    COMPARE - مقارنة الأفرع
    ============================================================ */
-function initCompareSelects() {
-  const sel1 = document.getElementById('compare-select-1');
-  const sel2 = document.getElementById('compare-select-2');
-  if (!sel1 || !sel2) return;
-  const L = lang();
+let compareSelected = { 1: '', 2: '' };
 
-  [sel1, sel2].forEach((sel) => {
-    const current = sel.value;
-    sel.innerHTML = '<option value="">—</option>';
+function initCompareSelects() {
+  const L = lang();
+  [1, 2].forEach((n) => {
+    const dropdown = document.getElementById('compare-dropdown-' + n);
+    if (!dropdown) return;
+    dropdown.innerHTML = '';
     DEPARTMENTS.forEach((d) => {
-      const opt = document.createElement('option');
-      opt.value = d.slug;
-      opt.textContent = d.name[L];
-      sel.appendChild(opt);
+      const opt = document.createElement('div');
+      opt.className = 'custom-select-option' + (compareSelected[n] === d.slug ? ' selected' : '');
+      opt.setAttribute('data-slug', d.slug);
+      opt.onclick = function () { selectCompareOption(n, d.slug); };
+      opt.innerHTML = '<div class="custom-select-option-icon">' + d.icon + '</div><span>' + d.name[L] + '</span>';
+      dropdown.appendChild(opt);
     });
-    sel.value = current;
+    const trigger = document.querySelector('#compare-custom-' + n + ' .custom-select-value');
+    if (trigger) {
+      if (compareSelected[n]) {
+        const dept = DEPARTMENTS.find((d) => d.slug === compareSelected[n]);
+        trigger.textContent = dept ? dept.name[L] : '';
+        trigger.classList.remove('placeholder');
+      } else {
+        trigger.textContent = tr('compare.select' + n);
+        trigger.classList.add('placeholder');
+      }
+    }
   });
 }
 
-function renderComparison() {
+function toggleCustomSelect(n) {
+  const sel = document.getElementById('compare-custom-' + n);
+  const isOpen = sel.classList.contains('open');
+  /* Close all first */
+  document.querySelectorAll('.custom-select').forEach((el) => el.classList.remove('open'));
+  if (!isOpen) sel.classList.add('open');
+}
+
+function selectCompareOption(n, slug) {
+  compareSelected[n] = slug;
+  document.querySelectorAll('.custom-select').forEach((el) => el.classList.remove('open'));
   initCompareSelects();
-  const slug1 = document.getElementById('compare-select-1').value;
-  const slug2 = document.getElementById('compare-select-2').value;
+  renderComparison();
+}
+
+/* Close dropdown on outside click */
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.custom-select')) {
+    document.querySelectorAll('.custom-select').forEach((el) => el.classList.remove('open'));
+  }
+});
+
+function renderComparison() {
+  const slug1 = compareSelected[1];
+  const slug2 = compareSelected[2];
   const result = document.getElementById('compare-result');
   if (!result) return;
 
