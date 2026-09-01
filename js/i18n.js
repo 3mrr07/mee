@@ -506,24 +506,16 @@ function renderComparison() {
     '</div>';
   }
 
-  // Stats
-  const statsHtml = '<div class="compare-stats">' +
-    '<div class="compare-stat-card"><div class="compare-stat-number">' + common.length + '</div><div class="compare-stat-label">' + tr('compare.courses') + '</div></div>' +
-    '<div class="compare-stat-card"><div class="compare-stat-number">' + only1.length + '</div><div class="compare-stat-label">' + d1.title[L] + '</div></div>' +
-    '<div class="compare-stat-card"><div class="compare-stat-number">' + only2.length + '</div><div class="compare-stat-label">' + d2.title[L] + '</div></div>' +
-  '</div>';
-
   let commonHtml = common.length > 0
     ? '<div class="compare-common-list">' + common.map((c) => '<span class="compare-course-tag">' + cName(c) + '</span>').join('') + '</div>'
     : '<p style="color:var(--text-muted)">' + tr('compare.noDiff') + '</p>';
 
   let diffHtml = '<div class="compare-diff-grid">';
-  diffHtml += '<div class="compare-diff-col"><h5>' + d1.title[L] + ' <span style="color:#E64B3B">(' + only1.length + ')</span></h5><ul>' + only1.slice(0, 8).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
-  diffHtml += '<div class="compare-diff-col"><h5>' + d2.title[L] + ' <span style="color:#E64B3B">(' + only2.length + ')</span></h5><ul>' + only2.slice(0, 8).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
+  diffHtml += '<div class="compare-diff-col"><h5>' + d1.title[L] + '</h5><ul>' + only1.slice(0, 8).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
+  diffHtml += '<div class="compare-diff-col"><h5>' + d2.title[L] + '</h5><ul>' + only2.slice(0, 8).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
   diffHtml += '</div>';
 
   result.innerHTML =
-    statsHtml +
     '<div class="compare-grid-2">' +
       buildCol(d1) +
       buildCol(d2) +
