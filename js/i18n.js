@@ -452,7 +452,7 @@ function initCompareSelects() {
       const opt = document.createElement('div');
       opt.className = 'custom-select-option' + (compareSelected[n] === d.slug ? ' selected' : '');
       opt.setAttribute('data-slug', d.slug);
-      opt.onclick = function () { selectCompareOption(n, d.slug); };
+      opt.onclick = function (e) { e.stopPropagation(); selectCompareOption(n, d.slug); };
       opt.innerHTML = '<div class="custom-select-option-icon">' + d.icon + '</div><span>' + d.name[L] + '</span>';
       dropdown.appendChild(opt);
     });
