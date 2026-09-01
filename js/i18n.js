@@ -266,11 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
    QUIZ - اختبار تخصصك
    ============================================================ */
 let quizCurrent = 0;
-let quizAnswers = [];
+let quizAnswers = []; /* كل عنصر: مصفوفة من الفهارس المختارة [] */
 
 function startQuiz() {
   quizCurrent = 0;
   quizAnswers = [];
+  for (let i = 0; i < QUIZ_QUESTIONS.length; i++) quizAnswers.push([]);
   document.getElementById('quiz-start').style.display = 'none';
   document.getElementById('quiz-questions').style.display = 'block';
   document.getElementById('quiz-result').style.display = 'none';
@@ -289,31 +290,41 @@ function renderQuizQuestion() {
   progressBar.style.width = ((quizCurrent + 1) / total * 100) + '%';
   progressText.textContent = (quizCurrent + 1) + '/' + total;
   nextBtn.textContent = quizCurrent === total - 1 ? tr('quiz.finish') : tr('quiz.next');
-  nextBtn.disabled = quizAnswers[quizCurrent] === undefined;
+  nextBtn.disabled = quizAnswers[quizCurrent].length === 0;
 
   let optionsHtml = '';
   q.options.forEach((opt, i) => {
-    const selected = quizAnswers[quizCurrent] === i ? ' quiz-option-selected' : '';
-    optionsHtml += '<button class="quiz-option' + selected + '" onclick="selectQuizOption(' + i + ')">' +
-      '<span class="quiz-option-letter">' + String.fromCharCode(65 + i) + '</span>' +
+    const selected = quizAnswers[quizCurrent].includes(i) ? ' quiz-option-selected' : '';
+    optionsHtml += '<button class="quiz-option' + selected + '" onclick="toggleQuizOption(' + i + ')">' +
+      '<span class="quiz-option-check">' + (quizAnswers[quizCurrent].includes(i) ? '&#10003;' : '') + '</span>' +
       '<span class="quiz-option-text">' + opt[L] + '</span>' +
       '</button>';
   });
 
+  const selectedCount = quizAnswers[quizCurrent].length;
+  const hintHtml = '<p class="quiz-hint">' + (L === 'ar' ? 'اختر 1 إلى 3 خيارات' : 'Choose 1 to 3 options') +
+    (selectedCount > 0 ? ' — ' + selectedCount + '/3' : '') + '</p>';
+
   area.innerHTML = '<div class="quiz-question">' +
     '<h3 class="quiz-question-text">' + q[L] + '</h3>' +
+    hintHtml +
     '<div class="quiz-options">' + optionsHtml + '</div>' +
     '</div>';
 }
 
-function selectQuizOption(idx) {
-  quizAnswers[quizCurrent] = idx;
-  document.getElementById('quiz-next-btn').disabled = false;
+function toggleQuizOption(idx) {
+  const arr = quizAnswers[quizCurrent];
+  const pos = arr.indexOf(idx);
+  if (pos > -1) {
+    arr.splice(pos, 1);
+  } else if (arr.length < 3) {
+    arr.push(idx);
+  }
   renderQuizQuestion();
 }
 
 function nextQuestion() {
-  if (quizAnswers[quizCurrent] === undefined) return;
+  if (quizAnswers[quizCurrent].length === 0) return;
   if (quizCurrent < QUIZ_QUESTIONS.length - 1) {
     quizCurrent++;
     renderQuizQuestion();
@@ -329,21 +340,23 @@ function showQuizResult() {
   const scores = {};
   DEPARTMENTS.forEach((d) => { scores[d.slug] = 0; });
 
-  quizAnswers.forEach((ansIdx, qIdx) => {
-    const dept = QUIZ_QUESTIONS[qIdx].options[ansIdx].dept;
-    scores[dept] = (scores[dept] || 0) + 1;
+  let totalSelections = 0;
+  quizAnswers.forEach((ansArr, qIdx) => {
+    ansArr.forEach((ansIdx) => {
+      const dept = QUIZ_QUESTIONS[qIdx].options[ansIdx].dept;
+      scores[dept] = (scores[dept] || 0) + 1;
+      totalSelections++;
+    });
   });
 
-  const sorted = DEPARTMENTS.map((d) => ({ slug: d.slug, name: d.name[lang()], title: d.title[lang()], score: scores[d.slug] }))
-    .sort((a, b) => b.score - a.score);
-
-  const maxScore = sorted[0].score;
-  const total = QUIZ_QUESTIONS.length;
+  const maxScore = Math.max(...Object.values(scores));
   const L = lang();
+  const sorted = DEPARTMENTS.map((d) => ({ slug: d.slug, name: d.name[L], title: d.title[L], score: scores[d.slug] }))
+    .sort((a, b) => b.score - a.score);
 
   let barsHtml = '';
   sorted.forEach((s) => {
-    const pct = Math.round((s.score / total) * 100);
+    const pct = totalSelections > 0 ? Math.round((s.score / totalSelections) * 100) : 0;
     barsHtml += '<div class="quiz-bar-row">' +
       '<div class="quiz-bar-label">' + s.title + '</div>' +
       '<div class="quiz-bar-track"><div class="quiz-bar-fill" style="width:' + pct + '%"></div></div>' +
@@ -357,7 +370,7 @@ function showQuizResult() {
     '<div class="quiz-result-card">' +
       '<div class="quiz-result-badge">' + tr('quiz.resultTitle') + '</div>' +
       '<div class="quiz-result-dept">' + sorted[0].name + '</div>' +
-      '<div class="quiz-result-pct">' + Math.round((maxScore / total) * 100) + '% ' + tr('quiz.match') + '</div>' +
+      '<div class="quiz-result-pct">' + (totalSelections > 0 ? Math.round((maxScore / totalSelections) * 100) : 0) + '% ' + tr('quiz.match') + '</div>' +
       '<p class="quiz-result-desc">' + (topDept ? topDept.tagline[L] : '') + '</p>' +
       '<div class="quiz-result-bars">' + barsHtml + '</div>' +
       '<div class="quiz-result-actions">' +
