@@ -55,6 +55,7 @@ function applyLanguage() {
   if (page === 'robotics') renderRoboticsDynamics();
   if (page === 'union') renderUnionDynamics();
   if (page === 'compare') initCompareSelects();
+  if (page === 'quiz') showSavedResult();
 
   // تحديث عنوان الصفحة
   const titleEl = document.querySelector('title[data-page-title]');
@@ -272,6 +273,7 @@ function startQuiz() {
   quizCurrent = 0;
   quizAnswers = [];
   for (let i = 0; i < QUIZ_QUESTIONS.length; i++) quizAnswers.push([]);
+  localStorage.removeItem('quiz_result');
   document.getElementById('quiz-start').style.display = 'none';
   document.getElementById('quiz-questions').style.display = 'block';
   document.getElementById('quiz-result').style.display = 'none';
@@ -286,11 +288,13 @@ function renderQuizQuestion() {
   const progressBar = document.getElementById('quiz-progress-bar');
   const progressText = document.getElementById('quiz-progress-text');
   const nextBtn = document.getElementById('quiz-next-btn');
+  const prevBtn = document.getElementById('quiz-prev-btn');
 
   progressBar.style.width = ((quizCurrent + 1) / total * 100) + '%';
   progressText.textContent = (quizCurrent + 1) + '/' + total;
   nextBtn.textContent = quizCurrent === total - 1 ? tr('quiz.finish') : tr('quiz.next');
   nextBtn.disabled = quizAnswers[quizCurrent].length === 0;
+  prevBtn.style.display = quizCurrent > 0 ? 'inline-flex' : 'none';
 
   let optionsHtml = '';
   q.options.forEach((opt, i) => {
@@ -321,6 +325,13 @@ function toggleQuizOption(idx) {
     arr.push(idx);
   }
   renderQuizQuestion();
+}
+
+function prevQuestion() {
+  if (quizCurrent > 0) {
+    quizCurrent--;
+    renderQuizQuestion();
+  }
 }
 
 function nextQuestion() {
@@ -354,12 +365,20 @@ function showQuizResult() {
   const sorted = DEPARTMENTS.map((d) => ({ slug: d.slug, name: d.name[L], title: d.title[L], score: scores[d.slug] }))
     .sort((a, b) => b.score - a.score);
 
+  /* حفظ النتيجة في localStorage */
+  const resultData = { sorted: sorted.map((s) => ({ slug: s.slug, score: s.score })), totalSelections, topSlug: sorted[0].slug, lang: L, date: Date.now() };
+  localStorage.setItem('quiz_result', JSON.stringify(resultData));
+
+  renderQuizResult(sorted, totalSelections, maxScore, L);
+}
+
+function renderQuizResult(sorted, totalSelections, maxScore, L) {
   let barsHtml = '';
-  sorted.forEach((s) => {
+  sorted.forEach((s, i) => {
     const pct = totalSelections > 0 ? Math.round((s.score / totalSelections) * 100) : 0;
     barsHtml += '<div class="quiz-bar-row">' +
       '<div class="quiz-bar-label">' + s.title + '</div>' +
-      '<div class="quiz-bar-track"><div class="quiz-bar-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="quiz-bar-track"><div class="quiz-bar-fill" data-pct="' + pct + '" style="width:0%"></div></div>' +
       '<div class="quiz-bar-pct">' + pct + '%</div>' +
       '</div>';
   });
@@ -379,9 +398,40 @@ function showQuizResult() {
         '<button class="btn btn-outline" onclick="retakeQuiz()">' + tr('quiz.retake') + '</button>' +
       '</div>' +
     '</div>';
+
+  /* أنيميشن الأعمدة بعد الرسم */
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.quiz-bar-fill').forEach((bar) => {
+      bar.style.width = bar.getAttribute('data-pct') + '%';
+    });
+  });
+}
+
+/* عرض النتيجة المحفوظة */
+function showSavedResult() {
+  const raw = localStorage.getItem('quiz_result');
+  if (!raw) return false;
+  try {
+    const data = JSON.parse(raw);
+    if (!data.sorted || !data.topSlug) return false;
+
+    document.getElementById('quiz-start').style.display = 'none';
+    document.getElementById('quiz-questions').style.display = 'none';
+    document.getElementById('quiz-result').style.display = 'block';
+
+    const L = lang();
+    const sorted = data.sorted.map((s) => {
+      const dept = DEPARTMENTS.find((d) => d.slug === s.slug);
+      return { slug: s.slug, name: dept ? dept.name[L] : s.slug, title: dept ? dept.title[L] : s.slug, score: s.score };
+    });
+    const maxScore = sorted[0].score;
+    renderQuizResult(sorted, data.totalSelections, maxScore, L);
+    return true;
+  } catch (e) { return false; }
 }
 
 function retakeQuiz() {
+  localStorage.removeItem('quiz_result');
   document.getElementById('quiz-start').style.display = 'block';
   document.getElementById('quiz-questions').style.display = 'none';
   document.getElementById('quiz-result').style.display = 'none';

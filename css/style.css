@@ -942,7 +942,7 @@ p { color: var(--text-secondary); }
 }
 .quiz-option-text { flex: 1; font-weight: 500; }
 
-.quiz-nav { text-align: center; margin-top: var(--space-xl); }
+.quiz-nav { display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-xl); }
 .quiz-nav .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
 /* Quiz Result */
