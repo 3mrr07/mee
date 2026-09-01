@@ -455,3 +455,103 @@ const DEPARTMENTS = [
     ]
   }
 ];
+
+/* ============================================================
+   QUIZ DATA - اختبار تخصصك
+   كل سؤال له 7 خيارات (واحد لكل فرع): qowa, tasmim, taqa, electron, tahakum, mechatronics, maaden
+   كل خيار يضيف 1 نقطة للفرع المقابل
+   ============================================================ */
+
+const QUIZ_QUESTIONS = [
+  {
+    ar: "ما المادة الدراسية التي تستمتع بها أكثر؟",
+    en: "Which subject do you enjoy the most?",
+    options: [
+      { ar: "الميكانيكا والفيزياء التطبيقية", en: "Mechanics & applied physics", dept: "qowa" },
+      { ar: "التصميم والرسومات الهندسية", en: "Design & engineering drawing", dept: "tasmim" },
+      { ar: "الدوائر الكهربائية والطاقة", en: "Electrical circuits & power", dept: "taqa" },
+      { ar: "الإلكترونيات والبرمجة", en: "Electronics & programming", dept: "electron" },
+      { ar: "البرمجة والخوارزميات", en: "Programming & algorithms", dept: "tahakum" },
+      { ar: "دمج كل شيء: ميكانيكا + كهرباء + برمجة", en: "Combining everything: mech + elec + code", dept: "mechatronics" },
+      { ar: "الكيمياء وعلوم المواد", en: "Chemistry & materials science", dept: "maaden" }
+    ]
+  },
+  {
+    ar: "أين تتخيّل بيئة عملك المستقبلية؟",
+    en: "Where do you envision your future workplace?",
+    options: [
+      { ar: "مصنع أو ورشة كبيرة", en: "A large factory or workshop", dept: "qowa" },
+      { ar: "مكتب تصميم أو استوديو", en: "A design office or studio", dept: "tasmim" },
+      { ar: "محطة توليد أو شبكة كهرباء", en: "Power plant or electrical grid", dept: "taqa" },
+      { ar: "مختبر أبحاث أو غرفة سيرفرات", en: "Research lab or server room", dept: "electron" },
+      { ar: "مركز تحكم صناعي", en: "Industrial control centre", dept: "tahakum" },
+      { ar: "خط إنتاج ذكي أو مختبر روبوتات", en: "Smart production line or robotics lab", dept: "mechatronics" },
+      { ar: "مصنع تعدين أو صناعات مواد", en: "Mining or materials factory", dept: "maaden" }
+    ]
+  },
+  {
+    ar: "ما الذي يثير حماسك أكثر؟",
+    en: "What excites you the most?",
+    options: [
+      { ar: "تفكيك الآلات وفهم كيف تعمل", en: "Dismantling machines and understanding how they work", dept: "qowa" },
+      { ar: "تحويل فكرة إلى منتج ملموس", en: "Turning an idea into a real product", dept: "tasmim" },
+      { ar: "توليد الكهرباء وتوزيعها", en: "Generating and distributing electricity", dept: "taqa" },
+      { ar: "بناء دوائر إلكترونية تعمل فعلاً", en: "Building electronic circuits that actually work", dept: "electron" },
+      { ar: "برمجة أنظمة تعمل تلقائياً", en: "Programming systems that run automatically", dept: "tahakum" },
+      { ar: "بناء روبوت يتحرك ويتفاعل", en: "Building a robot that moves and interacts", dept: "mechatronics" },
+      { ar: "اكتشاف خواص مواد جديدة", en: "Discovering properties of new materials", dept: "maaden" }
+    ]
+  },
+  {
+    ar: "هل تفضل العمل العملي أم النظري؟",
+    en: "Do you prefer practical or theoretical work?",
+    options: [
+      { ar: "عملي بالكامل — أحب أشياء بيدي", en: "Fully practical — I love working with my hands", dept: "qowa" },
+      { ar: "تصميم + تطبيق — أحب الإبداع", en: "Design + implementation — I love creativity", dept: "tasmim" },
+      { ar: "نظري وعملي — أفهم النظريات وأطبقها", en: "Both — I understand theories and apply them", dept: "taqa" },
+      { ar: " عملي ودقيق — أحب التجارب", en: "Practical & precise — I love experiments", dept: "electron" },
+      { ar: "برمجي — أحب كتابة الكود", en: "Software — I love writing code", dept: "tahakum" },
+      { ar: "مزيج شامل — أحب كل شيء", en: "A comprehensive mix — I love everything", dept: "mechatronics" },
+      { ar: "مختبري — أحب التجارب الكيميائية", en: "Lab-based — I love chemical experiments", dept: "maaden" }
+    ]
+  },
+  {
+    ar: "أي مهارة تشعر أنها عندك بشكل طبيعي؟",
+    en: "Which skill feels most natural to you?",
+    options: [
+      { ar: "فهم الآلات وطريقة عملها", en: "Understanding machines and how they work", dept: "qowa" },
+      { ar: "التفكير البصري والتصميم", en: "Visual thinking and design", dept: "tasmim" },
+      { ar: "فهم الدوائر والأنظمة الكهربائية", en: "Understanding circuits and electrical systems", dept: "taqa" },
+      { ar: "الدقة في التفاصيل الإلكترونية", en: "Precision in electronic details", dept: "electron" },
+      { ar: "التفكير المنطيقي وحل المسائل", en: "Logical thinking and problem solving", dept: "tahakum" },
+      { ar: "التكامل بين المهارات المختلفة", en: "Integrating different skills", dept: "mechatronics" },
+      { ar: "المهارة في المختبر والكيمياء", en: "Lab skills and chemistry", dept: "maaden" }
+    ]
+  },
+  {
+    ar: "ما نوع المشاريع الذي تحب العمل عليه؟",
+    en: "What type of project do you love working on?",
+    options: [
+      { ar: "صيانة أو تحسين آلة كبيرة", en: "Maintaining or improving a large machine", dept: "qowa" },
+      { ar: "تصميم منتج أو قطعة جديدة", en: "Designing a new product or part", dept: "tasmim" },
+      { ar: "تصميم شبكة كهرباء أو نظام توليد", en: "Designing a power grid or generation system", dept: "taqa" },
+      { ar: "بناء جهاز إلكتروني ذكي", en: "Building a smart electronic device", dept: "electron" },
+      { ar: "برمجة نظام أتمتة كامل", en: "Programming a full automation system", dept: "tahakum" },
+      { ar: "بناء روبوت أو آلة ذكية", en: "Building a robot or smart machine", dept: "mechatronics" },
+      { ar: "تطوير مادة أو سبيكة جديدة", en: "Developing a new material or alloy", dept: "maaden" }
+    ]
+  },
+  {
+    ar: "ما أكثر شيء تحبه في الهندسة؟",
+    en: "What do you love most about engineering?",
+    options: [
+      { ar: "أنها تجعل الآلات تعمل بشكل أفضل", en: "It makes machines work better", dept: "qowa" },
+      { ar: "أنها تحوّل الأفكار إلى واقع", en: "It turns ideas into reality", dept: "tasmim" },
+      { ar: "أنها تولّد الطاقة التي نحتاجها", en: "It generates the energy we need", dept: "taqa" },
+      { ar: "أنها تصنع أجهزة ذكية", en: "It creates smart devices", dept: "electron" },
+      { ar: "أنها تجعل الأنظمة تعمل تلقائياً", en: "It makes systems run automatically", dept: "tahakum" },
+      { ar: "أنها تدمج كل التخصصات معاً", en: "It combines all disciplines together", dept: "mechatronics" },
+      { ar: "أنها تفهم المادة التيتُصنع كل شيء", en: "It understands the material that makes everything", dept: "maaden" }
+    ]
+  }
+];

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hme-v6';
+const CACHE_NAME = 'hme-v7';
 const ASSETS = [
   './',
   './index.html',
@@ -12,6 +12,8 @@ const ASSETS = [
   './union.html',
   './robotics.html',
   './guide.html',
+  './quiz.html',
+  './compare.html',
   './css/style.css',
   './js/site-data.js',
   './js/translations.js',

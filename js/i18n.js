@@ -54,6 +54,7 @@ function applyLanguage() {
   if (page === 'guide') renderGuideComparison();
   if (page === 'robotics') renderRoboticsDynamics();
   if (page === 'union') renderUnionDynamics();
+  if (page === 'compare') initCompareSelects();
 
   // تحديث عنوان الصفحة
   const titleEl = document.querySelector('title[data-page-title]');
@@ -260,3 +261,206 @@ document.addEventListener('DOMContentLoaded', () => {
   window.__i18nInited = true;
   applyLanguage();
 });
+
+/* ============================================================
+   QUIZ - اختبار تخصصك
+   ============================================================ */
+let quizCurrent = 0;
+let quizAnswers = [];
+
+function startQuiz() {
+  quizCurrent = 0;
+  quizAnswers = [];
+  document.getElementById('quiz-start').style.display = 'none';
+  document.getElementById('quiz-questions').style.display = 'block';
+  document.getElementById('quiz-result').style.display = 'none';
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  const q = QUIZ_QUESTIONS[quizCurrent];
+  const L = lang();
+  const total = QUIZ_QUESTIONS.length;
+  const area = document.getElementById('quiz-question-area');
+  const progressBar = document.getElementById('quiz-progress-bar');
+  const progressText = document.getElementById('quiz-progress-text');
+  const nextBtn = document.getElementById('quiz-next-btn');
+
+  progressBar.style.width = ((quizCurrent + 1) / total * 100) + '%';
+  progressText.textContent = (quizCurrent + 1) + '/' + total;
+  nextBtn.textContent = quizCurrent === total - 1 ? tr('quiz.finish') : tr('quiz.next');
+  nextBtn.disabled = quizAnswers[quizCurrent] === undefined;
+
+  let optionsHtml = '';
+  q.options.forEach((opt, i) => {
+    const selected = quizAnswers[quizCurrent] === i ? ' quiz-option-selected' : '';
+    optionsHtml += '<button class="quiz-option' + selected + '" onclick="selectQuizOption(' + i + ')">' +
+      '<span class="quiz-option-letter">' + String.fromCharCode(65 + i) + '</span>' +
+      '<span class="quiz-option-text">' + opt[L] + '</span>' +
+      '</button>';
+  });
+
+  area.innerHTML = '<div class="quiz-question">' +
+    '<h3 class="quiz-question-text">' + q[L] + '</h3>' +
+    '<div class="quiz-options">' + optionsHtml + '</div>' +
+    '</div>';
+}
+
+function selectQuizOption(idx) {
+  quizAnswers[quizCurrent] = idx;
+  document.getElementById('quiz-next-btn').disabled = false;
+  renderQuizQuestion();
+}
+
+function nextQuestion() {
+  if (quizAnswers[quizCurrent] === undefined) return;
+  if (quizCurrent < QUIZ_QUESTIONS.length - 1) {
+    quizCurrent++;
+    renderQuizQuestion();
+  } else {
+    showQuizResult();
+  }
+}
+
+function showQuizResult() {
+  document.getElementById('quiz-questions').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'block';
+
+  const scores = {};
+  DEPARTMENTS.forEach((d) => { scores[d.slug] = 0; });
+
+  quizAnswers.forEach((ansIdx, qIdx) => {
+    const dept = QUIZ_QUESTIONS[qIdx].options[ansIdx].dept;
+    scores[dept] = (scores[dept] || 0) + 1;
+  });
+
+  const sorted = DEPARTMENTS.map((d) => ({ slug: d.slug, name: d.name[lang()], title: d.title[lang()], score: scores[d.slug] }))
+    .sort((a, b) => b.score - a.score);
+
+  const maxScore = sorted[0].score;
+  const total = QUIZ_QUESTIONS.length;
+  const L = lang();
+
+  let barsHtml = '';
+  sorted.forEach((s) => {
+    const pct = Math.round((s.score / total) * 100);
+    barsHtml += '<div class="quiz-bar-row">' +
+      '<div class="quiz-bar-label">' + s.title + '</div>' +
+      '<div class="quiz-bar-track"><div class="quiz-bar-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="quiz-bar-pct">' + pct + '%</div>' +
+      '</div>';
+  });
+
+  const topDept = DEPARTMENTS.find((d) => d.slug === sorted[0].slug);
+
+  document.getElementById('quiz-result').innerHTML =
+    '<div class="quiz-result-card">' +
+      '<div class="quiz-result-badge">' + tr('quiz.resultTitle') + '</div>' +
+      '<div class="quiz-result-dept">' + sorted[0].name + '</div>' +
+      '<div class="quiz-result-pct">' + Math.round((maxScore / total) * 100) + '% ' + tr('quiz.match') + '</div>' +
+      '<p class="quiz-result-desc">' + (topDept ? topDept.tagline[L] : '') + '</p>' +
+      '<div class="quiz-result-bars">' + barsHtml + '</div>' +
+      '<div class="quiz-result-actions">' +
+        (topDept ? '<a href="' + deptUrl(topDept.slug) + '" class="btn btn-primary">' + tr('quiz.viewDept') + '</a>' : '') +
+        '<button class="btn btn-outline" onclick="retakeQuiz()">' + tr('quiz.retake') + '</button>' +
+      '</div>' +
+    '</div>';
+}
+
+function retakeQuiz() {
+  document.getElementById('quiz-start').style.display = 'block';
+  document.getElementById('quiz-questions').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'none';
+}
+
+/* ============================================================
+   COMPARE - مقارنة الأفرع
+   ============================================================ */
+function initCompareSelects() {
+  const sel1 = document.getElementById('compare-select-1');
+  const sel2 = document.getElementById('compare-select-2');
+  if (!sel1 || !sel2) return;
+  const L = lang();
+
+  [sel1, sel2].forEach((sel) => {
+    const current = sel.value;
+    sel.innerHTML = '<option value="">—</option>';
+    DEPARTMENTS.forEach((d) => {
+      const opt = document.createElement('option');
+      opt.value = d.slug;
+      opt.textContent = d.name[L];
+      sel.appendChild(opt);
+    });
+    sel.value = current;
+  });
+}
+
+function renderComparison() {
+  initCompareSelects();
+  const slug1 = document.getElementById('compare-select-1').value;
+  const slug2 = document.getElementById('compare-select-2').value;
+  const result = document.getElementById('compare-result');
+  if (!result) return;
+
+  if (!slug1 || !slug2) { result.innerHTML = ''; return; }
+  if (slug1 === slug2) { result.innerHTML = '<p class="text-center" style="color:var(--text-muted);padding:var(--space-2xl) 0">' + tr('compare.noDiff') + '</p>'; return; }
+
+  const d1 = DEPARTMENTS.find((d) => d.slug === slug1);
+  const d2 = DEPARTMENTS.find((d) => d.slug === slug2);
+  if (!d1 || !d2) return;
+  const L = lang();
+
+  // Common courses
+  const allCourses1 = new Set();
+  const allCourses2 = new Set();
+  d1.years.forEach((yr) => yr.forEach((sem) => sem.forEach((c) => allCourses1.add(c))));
+  d2.years.forEach((yr) => yr.forEach((sem) => sem.forEach((c) => allCourses2.add(c))));
+  const common = [...allCourses1].filter((c) => allCourses2.has(c));
+  const only1 = [...allCourses1].filter((c) => !allCourses2.has(c));
+  const only2 = [...allCourses2].filter((c) => !allCourses1.has(c));
+
+  let commonHtml = common.length > 0
+    ? '<div class="compare-common-list">' + common.map((c) => '<span class="compare-course-tag">' + cName(c) + '</span>').join('') + '</div>'
+    : '<p style="color:var(--text-muted)">' + tr('compare.noDiff') + '</p>';
+
+  let diffHtml = '<div class="compare-diff-grid">';
+  diffHtml += '<div class="compare-diff-col"><h5>' + d1.title[L] + '</h5><ul>' + only1.slice(0, 6).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
+  diffHtml += '<div class="compare-diff-col"><h5>' + d2.title[L] + '</h5><ul>' + only2.slice(0, 6).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
+  diffHtml += '</div>';
+
+  // Career overlap
+  const careers1 = d1.careers[L].map((c) => c.title);
+  const careers2 = d2.careers[L].map((c) => c.title);
+
+  result.innerHTML =
+    '<div class="compare-grid-2">' +
+      // Col 1
+      '<div class="compare-col">' +
+        '<div class="compare-col-header" style="--dept-color:' + d1.color + '">' + d1.name[L] + '</div>' +
+        '<div class="compare-section"><h5>' + tr('compare.about') + '</h5><p>' + d1.about[L] + '</p></div>' +
+        '<div class="compare-section"><h5>' + tr('compare.guide') + '</h5><ul class="comparison-list">' +
+          d1.guide[L].map((g) => '<li>' + g + '</li>').join('') + '</ul></div>' +
+        '<div class="compare-section"><h5>' + tr('compare.careers') + '</h5><ul class="comparison-list">' +
+          careers1.map((c) => '<li>' + c + '</li>').join('') + '</ul></div>' +
+      '</div>' +
+      // Col 2
+      '<div class="compare-col">' +
+        '<div class="compare-col-header" style="--dept-color:' + d2.color + '">' + d2.name[L] + '</div>' +
+        '<div class="compare-section"><h5>' + tr('compare.about') + '</h5><p>' + d2.about[L] + '</p></div>' +
+        '<div class="compare-section"><h5>' + tr('compare.guide') + '</h5><ul class="comparison-list">' +
+          d2.guide[L].map((g) => '<li>' + g + '</li>').join('') + '</ul></div>' +
+        '<div class="compare-section"><h5>' + tr('compare.careers') + '</h5><ul class="comparison-list">' +
+          careers2.map((c) => '<li>' + c + '</li>').join('') + '</ul></div>' +
+      '</div>' +
+    '</div>' +
+    // Common courses
+    '<div class="compare-shared mt-xl">' +
+      '<h4 style="margin-bottom:var(--space-md)">' + tr('compare.courses') + ' <span class="compare-count">' + common.length + '</span></h4>' +
+      commonHtml +
+    '</div>' +
+    // Unique courses
+    '<div class="compare-unique mt-xl">' +
+      '<h4 style="margin-bottom:var(--space-md)">' + tr('compare.diff') + '</h4>' +
+      diffHtml +
+    '</div>';
+}
