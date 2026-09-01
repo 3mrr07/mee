@@ -483,48 +483,57 @@ function renderComparison() {
   const only1 = [...allCourses1].filter((c) => !allCourses2.has(c));
   const only2 = [...allCourses2].filter((c) => !allCourses1.has(c));
 
+  function buildCol(d) {
+    const careers = d.careers[L];
+    let careersHtml = careers.map((c) =>
+      '<div class="compare-career-item">' +
+        '<div class="compare-career-icon">' + c.icon + '</div>' +
+        '<div><strong>' + c.title + '</strong><br><span style="color:var(--text-muted);font-size:0.75rem">' + c.text + '</span></div>' +
+      '</div>'
+    ).join('');
+
+    let guideHtml = d.guide[L].map((g) => '<li>' + g + '</li>').join('');
+
+    return '<div class="compare-col">' +
+      '<div class="compare-col-header" style="--dept-color:' + d.color + '">' +
+        '<div class="compare-col-icon">' + d.icon + '</div>' +
+        '<div class="compare-col-name">' + d.name[L] + '</div>' +
+        '<div class="compare-col-tagline">' + d.tagline[L] + '</div>' +
+      '</div>' +
+      '<div class="compare-section"><div class="compare-section-label">' + tr('compare.about') + '</div><p>' + d.about[L] + '</p></div>' +
+      '<div class="compare-section"><div class="compare-section-label">' + tr('compare.careers') + '</div>' + careersHtml + '</div>' +
+      '<div class="compare-section"><div class="compare-section-label">' + tr('compare.guide') + '</div><ul class="comparison-list">' + guideHtml + '</ul></div>' +
+    '</div>';
+  }
+
+  // Stats
+  const statsHtml = '<div class="compare-stats">' +
+    '<div class="compare-stat-card"><div class="compare-stat-number">' + common.length + '</div><div class="compare-stat-label">' + tr('compare.courses') + '</div></div>' +
+    '<div class="compare-stat-card"><div class="compare-stat-number">' + only1.length + '</div><div class="compare-stat-label">' + d1.title[L] + '</div></div>' +
+    '<div class="compare-stat-card"><div class="compare-stat-number">' + only2.length + '</div><div class="compare-stat-label">' + d2.title[L] + '</div></div>' +
+  '</div>';
+
   let commonHtml = common.length > 0
     ? '<div class="compare-common-list">' + common.map((c) => '<span class="compare-course-tag">' + cName(c) + '</span>').join('') + '</div>'
     : '<p style="color:var(--text-muted)">' + tr('compare.noDiff') + '</p>';
 
   let diffHtml = '<div class="compare-diff-grid">';
-  diffHtml += '<div class="compare-diff-col"><h5>' + d1.title[L] + '</h5><ul>' + only1.slice(0, 6).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
-  diffHtml += '<div class="compare-diff-col"><h5>' + d2.title[L] + '</h5><ul>' + only2.slice(0, 6).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
+  diffHtml += '<div class="compare-diff-col"><h5>' + d1.title[L] + ' <span style="color:#E64B3B">(' + only1.length + ')</span></h5><ul>' + only1.slice(0, 8).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
+  diffHtml += '<div class="compare-diff-col"><h5>' + d2.title[L] + ' <span style="color:#E64B3B">(' + only2.length + ')</span></h5><ul>' + only2.slice(0, 8).map((c) => '<li>' + cName(c) + '</li>').join('') + '</ul></div>';
   diffHtml += '</div>';
 
-  // Career overlap
-  const careers1 = d1.careers[L].map((c) => c.title);
-  const careers2 = d2.careers[L].map((c) => c.title);
-
   result.innerHTML =
+    statsHtml +
     '<div class="compare-grid-2">' +
-      // Col 1
-      '<div class="compare-col">' +
-        '<div class="compare-col-header" style="--dept-color:' + d1.color + '">' + d1.name[L] + '</div>' +
-        '<div class="compare-section"><h5>' + tr('compare.about') + '</h5><p>' + d1.about[L] + '</p></div>' +
-        '<div class="compare-section"><h5>' + tr('compare.guide') + '</h5><ul class="comparison-list">' +
-          d1.guide[L].map((g) => '<li>' + g + '</li>').join('') + '</ul></div>' +
-        '<div class="compare-section"><h5>' + tr('compare.careers') + '</h5><ul class="comparison-list">' +
-          careers1.map((c) => '<li>' + c + '</li>').join('') + '</ul></div>' +
-      '</div>' +
-      // Col 2
-      '<div class="compare-col">' +
-        '<div class="compare-col-header" style="--dept-color:' + d2.color + '">' + d2.name[L] + '</div>' +
-        '<div class="compare-section"><h5>' + tr('compare.about') + '</h5><p>' + d2.about[L] + '</p></div>' +
-        '<div class="compare-section"><h5>' + tr('compare.guide') + '</h5><ul class="comparison-list">' +
-          d2.guide[L].map((g) => '<li>' + g + '</li>').join('') + '</ul></div>' +
-        '<div class="compare-section"><h5>' + tr('compare.careers') + '</h5><ul class="comparison-list">' +
-          careers2.map((c) => '<li>' + c + '</li>').join('') + '</ul></div>' +
-      '</div>' +
+      buildCol(d1) +
+      buildCol(d2) +
     '</div>' +
-    // Common courses
-    '<div class="compare-shared mt-xl">' +
-      '<h4 style="margin-bottom:var(--space-md)">' + tr('compare.courses') + ' <span class="compare-count">' + common.length + '</span></h4>' +
+    '<div class="compare-shared">' +
+      '<h4>' + tr('compare.courses') + ' <span class="compare-count">' + common.length + '</span></h4>' +
       commonHtml +
     '</div>' +
-    // Unique courses
-    '<div class="compare-unique mt-xl">' +
-      '<h4 style="margin-bottom:var(--space-md)">' + tr('compare.diff') + '</h4>' +
+    '<div class="compare-unique">' +
+      '<h4>' + tr('compare.diff') + '</h4>' +
       diffHtml +
     '</div>';
 }
