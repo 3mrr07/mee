@@ -1023,139 +1023,78 @@ p { color: var(--text-secondary); }
   margin-bottom: var(--space-sm);
   text-align: center;
 }
-.compare-select {
-  width: 100%;
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-lg);
-  border: 2px solid var(--border-color);
-  background: var(--bg-card);
-  color: var(--text-primary);
-  font-family: inherit;
-  font-size: var(--text-base);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2395A597' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: left 14px center;
-  padding-left: 36px;
-}
-[dir="ltr"] .compare-select { background-position: right 14px center; padding-left: var(--space-lg); padding-right: 36px; }
-.compare-select:focus { outline: none; border-color: #E64B3B; box-shadow: 0 0 0 3px rgba(230, 75, 59, 0.15); }
-.compare-select option {
-  background: var(--bg-card);
-  color: var(--text-primary);
-  padding: 10px 14px;
-  font-size: var(--text-base);
-  font-weight: 500;
-  border: none;
-  line-height: 2;
-}
-.compare-select option[value=""] { color: var(--text-muted); }
 
-/* Custom Select Dropdown */
-.custom-select {
-  position: relative;
-  width: 100%;
-}
-.custom-select-trigger {
+/* Card-Based Picker */
+.compare-pickers {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+}
+.compare-picker {
+  flex: 1;
+  max-width: 400px;
+  min-width: 260px;
+}
+.compare-picker-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+.compare-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: var(--space-sm);
+}
+.compare-picker-card {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 14px 18px;
+  gap: 6px;
+  padding: var(--space-md) var(--space-sm);
   border-radius: var(--radius-lg);
   border: 2px solid var(--border-color);
   background: var(--bg-card);
-  color: var(--text-primary);
-  font-family: inherit;
-  font-size: var(--text-base);
-  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  user-select: none;
-  min-height: 52px;
+  text-align: center;
 }
-.custom-select-trigger:hover {
+.compare-picker-card:hover {
   border-color: var(--border-color-hover);
   background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.15);
 }
-.custom-select.open .custom-select-trigger {
+.compare-picker-card.selected {
   border-color: #E64B3B;
-  box-shadow: 0 0 0 3px rgba(230, 75, 59, 0.15);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  background: color-mix(in srgb, #E64B3B 10%, var(--bg-card));
+  box-shadow: 0 0 0 3px rgba(230, 75, 59, 0.12);
 }
-.custom-select-value { flex: 1; text-align: start; }
-.custom-select-value.placeholder { color: var(--text-muted); font-weight: 500; }
-.custom-select-arrow {
-  color: var(--text-muted);
-  font-size: 14px;
-  transition: transform 0.25s ease;
-  margin-inline-start: 10px;
-  flex-shrink: 0;
-}
-.custom-select.open .custom-select-arrow { transform: rotate(180deg); }
-.custom-select-dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0; right: 0;
-  background: var(--bg-card);
-  border: 2px solid #E64B3B;
-  border-top: 1px solid var(--border-color);
-  border-bottom-left-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
-  box-shadow: 0 12px 32px -6px rgba(0, 0, 0, 0.4);
-  z-index: 200;
-  max-height: 300px;
-  overflow-y: auto;
-  padding: 6px;
-  animation: dropIn 0.15s ease;
-}
-@keyframes dropIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.custom-select.open .custom-select-dropdown { display: block; }
-.custom-select-dropdown::-webkit-scrollbar { width: 6px; }
-.custom-select-dropdown::-webkit-scrollbar-track { background: transparent; }
-.custom-select-dropdown::-webkit-scrollbar-thumb { background: var(--border-color-hover); border-radius: 3px; }
-.custom-select-option {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
+.compare-picker-card-icon {
+  width: 40px; height: 40px;
   border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--text-secondary);
-}
-.custom-select-option:hover {
-  background: var(--bg-card-hover);
-  color: var(--text-primary);
-  padding-inline-start: 18px;
-}
-.custom-select-option.selected {
-  background: color-mix(in srgb, #E64B3B 12%, transparent);
-  color: #E64B3B;
-  font-weight: 600;
-}
-.custom-select-option-icon {
-  width: 32px; height: 32px;
-  min-width: 32px;
-  border-radius: var(--radius-sm);
   background: #F3E5D8;
   display: flex; align-items: center; justify-content: center;
   color: #E64B3B;
 }
-.custom-select-option-icon svg { width: 16px; height: 16px; }
-[dir="ltr"] .custom-select-option:hover { padding-inline-start: 14px; padding-inline-end: 18px; }
+.compare-picker-card-icon svg { width: 20px; height: 20px; }
+.compare-picker-card-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+@media (max-width: 768px) {
+  .compare-pickers { flex-direction: column; align-items: center; gap: var(--space-md); }
+  .compare-picker { max-width: 100%; min-width: 0; width: 100%; }
+  .compare-picker-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+  .compare-vs { padding: 0; margin-top: 0; }
+  .compare-vs-circle { width: 40px; height: 40px; font-size: var(--text-sm); }
+}
 .compare-vs {
   display: flex;
   align-items: center;
