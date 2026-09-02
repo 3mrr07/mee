@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css?v=2">
+  <link rel="stylesheet" href="./css/style.css?v=3">
   <link rel="manifest" href="./manifest.json">
 </head>
 <body data-page="compare">
@@ -49,17 +49,29 @@
       <div class="compare-selectors">
         <div class="compare-select-wrap">
           <label data-i18n="compare.select1">اختر الفرع الأول</label>
-          <select id="compare-select-1" class="compare-select" onchange="renderComparison()">
-            <option value="">—</option>
-          </select>
+          <button class="compare-pick-btn" id="compare-pick-1" onclick="openPicker(1)">
+            <span class="compare-pick-btn-text" data-i18n="compare.select1">اختر الفرع الأول</span>
+            <span class="compare-pick-btn-arrow">&#9662;</span>
+          </button>
         </div>
         <div class="compare-vs"><div class="compare-vs-circle">VS</div></div>
         <div class="compare-select-wrap">
           <label data-i18n="compare.select2">اختر الفرع الثاني</label>
-          <select id="compare-select-2" class="compare-select" onchange="renderComparison()">
-            <option value="">—</option>
-          </select>
+          <button class="compare-pick-btn" id="compare-pick-2" onclick="openPicker(2)">
+            <span class="compare-pick-btn-text" data-i18n="compare.select2">اختر الفرع الثاني</span>
+            <span class="compare-pick-btn-arrow">&#9662;</span>
+          </button>
         </div>
+      </div>
+
+      <!-- Picker Modal -->
+      <div class="picker-backdrop" id="picker-backdrop" onclick="closePicker()"></div>
+      <div class="picker-modal" id="picker-modal">
+        <div class="picker-modal-header">
+          <h3 id="picker-modal-title"></h3>
+          <button class="picker-modal-close" onclick="closePicker()">&times;</button>
+        </div>
+        <div class="picker-modal-grid" id="picker-modal-grid"></div>
       </div>
 
       <!-- Result Area -->

@@ -54,7 +54,7 @@ function applyLanguage() {
   if (page === 'guide') renderGuideComparison();
   if (page === 'robotics') renderRoboticsDynamics();
   if (page === 'union') renderUnionDynamics();
-  if (page === 'compare') initCompareSelects();
+  if (page === 'compare') { updatePickBtn(1); updatePickBtn(2); }
   if (page === 'quiz') showSavedResult();
 
   // تحديث عنوان الصفحة
@@ -440,28 +440,60 @@ function retakeQuiz() {
 /* ============================================================
    COMPARE - مقارنة الأفرع
    ============================================================ */
-function initCompareSelects() {
-  const sel1 = document.getElementById('compare-select-1');
-  const sel2 = document.getElementById('compare-select-2');
-  if (!sel1 || !sel2) return;
-  const L = lang();
+let compareSelected = { 1: '', 2: '' };
+let comparePickerSlot = 0;
 
-  [sel1, sel2].forEach((sel) => {
-    const current = sel.value;
-    sel.innerHTML = '<option value="">—</option>';
-    DEPARTMENTS.forEach((d) => {
-      const opt = document.createElement('option');
-      opt.value = d.slug;
-      opt.textContent = d.name[L];
-      sel.appendChild(opt);
-    });
-    sel.value = current;
+function openPicker(n) {
+  comparePickerSlot = n;
+  const L = lang();
+  const modal = document.getElementById('picker-modal');
+  const backdrop = document.getElementById('picker-backdrop');
+  const grid = document.getElementById('picker-modal-grid');
+  const title = document.getElementById('picker-modal-title');
+  if (!modal || !grid) return;
+  title.textContent = n === 1 ? tr('compare.select1') : tr('compare.select2');
+  grid.innerHTML = '';
+  DEPARTMENTS.forEach((d) => {
+    const card = document.createElement('div');
+    card.className = 'picker-card' + (compareSelected[n] === d.slug ? ' selected' : '');
+    card.onclick = function () { pickOption(n, d.slug); };
+    card.innerHTML = '<div class="picker-card-icon">' + d.icon + '</div><div class="picker-card-name">' + d.name[L] + '</div>';
+    grid.appendChild(card);
   });
+  modal.classList.add('open');
+  backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePicker() {
+  document.getElementById('picker-modal').classList.remove('open');
+  document.getElementById('picker-backdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function pickOption(n, slug) {
+  compareSelected[n] = slug;
+  closePicker();
+  updatePickBtn(n);
+  renderComparison();
+}
+
+function updatePickBtn(n) {
+  const L = lang();
+  const btn = document.getElementById('compare-pick-' + n);
+  if (!btn) return;
+  const text = btn.querySelector('.compare-pick-btn-text');
+  if (compareSelected[n]) {
+    const dept = DEPARTMENTS.find((d) => d.slug === compareSelected[n]);
+    if (dept && text) { text.textContent = dept.name[L]; text.style.color = ''; }
+  } else {
+    if (text) { text.textContent = n === 1 ? tr('compare.select1') : tr('compare.select2'); text.style.color = 'var(--text-muted)'; }
+  }
 }
 
 function renderComparison() {
-  const slug1 = document.getElementById('compare-select-1').value;
-  const slug2 = document.getElementById('compare-select-2').value;
+  const slug1 = compareSelected[1];
+  const slug2 = compareSelected[2];
   const result = document.getElementById('compare-result');
   if (!result) return;
 
