@@ -45,16 +45,20 @@
   <section class="section" style="padding-top: var(--space-2xl)">
     <div class="container">
 
-      <!-- Pickers -->
-      <div class="compare-pickers">
-        <div class="compare-picker" id="compare-picker-1">
-          <div class="compare-picker-label" data-i18n="compare.select1">اختر الفرع الأول</div>
-          <div class="compare-picker-grid" id="compare-grid-1"></div>
+      <!-- Selectors -->
+      <div class="compare-selectors">
+        <div class="compare-select-wrap">
+          <label data-i18n="compare.select1">اختر الفرع الأول</label>
+          <select id="compare-select-1" class="compare-select" onchange="renderComparison()">
+            <option value="">—</option>
+          </select>
         </div>
         <div class="compare-vs"><div class="compare-vs-circle">VS</div></div>
-        <div class="compare-picker" id="compare-picker-2">
-          <div class="compare-picker-label" data-i18n="compare.select2">اختر الفرع الثاني</div>
-          <div class="compare-picker-grid" id="compare-grid-2"></div>
+        <div class="compare-select-wrap">
+          <label data-i18n="compare.select2">اختر الفرع الثاني</label>
+          <select id="compare-select-2" class="compare-select" onchange="renderComparison()">
+            <option value="">—</option>
+          </select>
         </div>
       </div>
 

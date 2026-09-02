@@ -440,34 +440,28 @@ function retakeQuiz() {
 /* ============================================================
    COMPARE - مقارنة الأفرع
    ============================================================ */
-let compareSelected = { 1: '', 2: '' };
-
 function initCompareSelects() {
+  const sel1 = document.getElementById('compare-select-1');
+  const sel2 = document.getElementById('compare-select-2');
+  if (!sel1 || !sel2) return;
   const L = lang();
-  [1, 2].forEach((n) => {
-    const grid = document.getElementById('compare-grid-' + n);
-    if (!grid) return;
-    grid.innerHTML = '';
+
+  [sel1, sel2].forEach((sel) => {
+    const current = sel.value;
+    sel.innerHTML = '<option value="">—</option>';
     DEPARTMENTS.forEach((d) => {
-      const card = document.createElement('div');
-      card.className = 'compare-picker-card' + (compareSelected[n] === d.slug ? ' selected' : '');
-      card.setAttribute('data-slug', d.slug);
-      card.onclick = function () { selectCompareOption(n, d.slug); };
-      card.innerHTML = '<div class="compare-picker-card-icon">' + d.icon + '</div><div class="compare-picker-card-name">' + d.name[L] + '</div>';
-      grid.appendChild(card);
+      const opt = document.createElement('option');
+      opt.value = d.slug;
+      opt.textContent = d.name[L];
+      sel.appendChild(opt);
     });
+    sel.value = current;
   });
 }
 
-function selectCompareOption(n, slug) {
-  compareSelected[n] = slug;
-  initCompareSelects();
-  renderComparison();
-}
-
 function renderComparison() {
-  const slug1 = compareSelected[1];
-  const slug2 = compareSelected[2];
+  const slug1 = document.getElementById('compare-select-1').value;
+  const slug2 = document.getElementById('compare-select-2').value;
   const result = document.getElementById('compare-result');
   if (!result) return;
 
