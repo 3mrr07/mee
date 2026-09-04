@@ -54,7 +54,7 @@ function applyLanguage() {
   if (page === 'guide') renderGuideComparison();
   if (page === 'robotics') renderRoboticsDynamics();
   if (page === 'union') renderUnionDynamics();
-  if (page === 'compare') { updatePickBtn(1); updatePickBtn(2); }
+  if (page === 'compare') initComparePickers();
   if (page === 'quiz') showSavedResult();
 
   // تحديث عنوان الصفحة
@@ -441,71 +441,52 @@ function retakeQuiz() {
    COMPARE - مقارنة الأفرع
    ============================================================ */
 let compareSelected = { 1: '', 2: '' };
-let comparePickerSlot = 0;
 
-function openPicker(n) {
-  comparePickerSlot = n;
+function initComparePickers() {
   const L = lang();
-  const modal = document.getElementById('picker-modal');
-  const backdrop = document.getElementById('picker-backdrop');
-  const grid = document.getElementById('picker-modal-grid');
-  const title = document.getElementById('picker-modal-title');
-  if (!modal || !grid) return;
-  title.textContent = n === 1 ? tr('compare.select1') : tr('compare.select2');
-  grid.innerHTML = '';
-  DEPARTMENTS.forEach((d) => {
-    const card = document.createElement('div');
-    card.className = 'picker-card' + (compareSelected[n] === d.slug ? ' selected' : '');
-    card.onclick = function () { pickOption(n, d.slug); };
-    card.innerHTML = '<div class="picker-card-icon">' + d.icon + '</div><div class="picker-card-name">' + d.name[L] + '</div>';
-    grid.appendChild(card);
+  [1, 2].forEach((n) => {
+    const row = document.getElementById('picker-row-' + n);
+    if (!row) return;
+    row.innerHTML = '';
+    DEPARTMENTS.forEach((d) => {
+      const chip = document.createElement('button');
+      chip.className = 'cp-chip' + (compareSelected[n] === d.slug ? ' selected' : '');
+      chip.onclick = function () { pickDept(n, d.slug); };
+      chip.innerHTML = '<span class="cp-chip-icon">' + d.icon + '</span><span class="cp-chip-name">' + d.name[L] + '</span>';
+      row.appendChild(chip);
+    });
   });
-  modal.classList.add('open');
-  backdrop.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.getElementById('compare-msg').innerHTML = '';
+  document.getElementById('compare-result').innerHTML = '';
 }
 
-function closePicker() {
-  document.getElementById('picker-modal').classList.remove('open');
-  document.getElementById('picker-backdrop').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function pickOption(n, slug) {
+function pickDept(n, slug) {
+  if (compareSelected[n] === slug) return;
   compareSelected[n] = slug;
-  closePicker();
-  updatePickBtn(n);
-  renderComparison();
+  initComparePickers();
+  runComparison();
 }
 
-function updatePickBtn(n) {
-  const L = lang();
-  const btn = document.getElementById('compare-pick-' + n);
-  if (!btn) return;
-  const text = btn.querySelector('.compare-pick-btn-text');
-  if (compareSelected[n]) {
-    const dept = DEPARTMENTS.find((d) => d.slug === compareSelected[n]);
-    if (dept && text) { text.textContent = dept.name[L]; text.style.color = ''; }
-  } else {
-    if (text) { text.textContent = n === 1 ? tr('compare.select1') : tr('compare.select2'); text.style.color = 'var(--text-muted)'; }
+function runComparison() {
+  const s1 = compareSelected[1];
+  const s2 = compareSelected[2];
+  const msg = document.getElementById('compare-msg');
+  const result = document.getElementById('compare-result');
+  if (!s1 || !s2) return;
+  if (s1 === s2) {
+    msg.innerHTML = '<div class="compare-info-msg">' + tr('compare.pickDiff') + '</div>';
+    result.innerHTML = '';
+    return;
   }
-}
+  msg.innerHTML = '';
 
-function renderComparison() {
   const slug1 = compareSelected[1];
   const slug2 = compareSelected[2];
-  const result = document.getElementById('compare-result');
-  if (!result) return;
-
-  if (!slug1 || !slug2) { result.innerHTML = ''; return; }
-  if (slug1 === slug2) { result.innerHTML = '<p class="text-center" style="color:var(--text-muted);padding:var(--space-2xl) 0">' + tr('compare.noDiff') + '</p>'; return; }
-
   const d1 = DEPARTMENTS.find((d) => d.slug === slug1);
   const d2 = DEPARTMENTS.find((d) => d.slug === slug2);
   if (!d1 || !d2) return;
   const L = lang();
 
-  // Common courses
   const allCourses1 = new Set();
   const allCourses2 = new Set();
   d1.years.forEach((yr) => yr.forEach((sem) => sem.forEach((c) => allCourses1.add(c))));
@@ -522,9 +503,7 @@ function renderComparison() {
         '<div><strong>' + c.title + '</strong><br><span style="color:var(--text-muted);font-size:0.75rem">' + c.text + '</span></div>' +
       '</div>'
     ).join('');
-
     let guideHtml = d.guide[L].map((g) => '<li>' + g + '</li>').join('');
-
     return '<div class="compare-col">' +
       '<div class="compare-col-header" style="--dept-color:' + d.color + '">' +
         '<div class="compare-col-icon">' + d.icon + '</div>' +

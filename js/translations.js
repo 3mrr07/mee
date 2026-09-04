@@ -173,6 +173,7 @@ const TRANSLATIONS = {
     "compare.about": "نبذة مختصرة",
     "compare.guide": "نصيحة الفرع",
     "compare.noDiff": "الفروع متشابهة في معظم الجوانب",
+    "compare.pickDiff": "الرجاء اختيار فرعين مختلفين",
 
     "footer.line1": "ملتقى وجهتك الأكاديمية 2026 - كلية الهندسة الميكانيكية والكهربائية - جامعة حمص",
     "footer.line2": "إعداد: اتحاد طلبة سوريا - فرع حمص",
@@ -345,6 +346,7 @@ const TRANSLATIONS = {
     "compare.about": "Brief overview",
     "compare.guide": "Branch tip",
     "compare.noDiff": "These branches are similar in most aspects",
+    "compare.pickDiff": "Please select two different branches",
 
     "footer.line1": "Academic Destination Fair 2026 - Mechanical & Electrical Engineering - Homs University",
     "footer.line2": "Organized by: Student Union of Syria - Homs Branch",
