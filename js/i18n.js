@@ -54,7 +54,7 @@ function applyLanguage() {
   if (page === 'guide') renderGuideComparison();
   if (page === 'robotics') renderRoboticsDynamics();
   if (page === 'union') renderUnionDynamics();
-  if (page === 'compare') initComparePickers();
+  if (page === 'compare') { renderPickerChips(); if (compareSelected[1] && compareSelected[2]) runComparison(); }
   if (page === 'quiz') showSavedResult();
 
   // تحديث عنوان الصفحة
@@ -443,6 +443,13 @@ function retakeQuiz() {
 let compareSelected = { 1: '', 2: '' };
 
 function initComparePickers() {
+  compareSelected = { 1: '', 2: '' };
+  renderPickerChips();
+  document.getElementById('compare-msg').innerHTML = '';
+  document.getElementById('compare-result').innerHTML = '';
+}
+
+function renderPickerChips() {
   const L = lang();
   [1, 2].forEach((n) => {
     const row = document.getElementById('picker-row-' + n);
@@ -456,14 +463,12 @@ function initComparePickers() {
       row.appendChild(chip);
     });
   });
-  document.getElementById('compare-msg').innerHTML = '';
-  document.getElementById('compare-result').innerHTML = '';
 }
 
 function pickDept(n, slug) {
   if (compareSelected[n] === slug) return;
   compareSelected[n] = slug;
-  initComparePickers();
+  renderPickerChips();
   runComparison();
 }
 
