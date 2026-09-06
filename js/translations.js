@@ -60,7 +60,7 @@ const TRANSLATIONS = {
     "dept.year": "السنة",
     "dept.note": "الخطة أدناه تقريبية لعرض المواد العامة — القائمة الرسمية الكاملة تصلك من ركن الكلية أو مكتب التعليم.",
     "dept.cta.title": "هل تريد أن تعرف أكثر؟",
-    "dept.cta.text": "تواصل مع طلاب الفرع في الملتقى أو زر ركن الكلية في البهو",
+    "dept.cta.text": "سجل الآن في جلسات الإرشاد الأكاديمي مع الخريجين، أو انضم للجولة الميدانية لمخابر وركن الكلية.",
     "dept.cta.btn": "العودة للرئيسية",
 
     // الهيئة الطلابية
@@ -237,7 +237,7 @@ const TRANSLATIONS = {
     "dept.year": "Year",
     "dept.note": "The plan below is indicative of the general subjects — get the official full list at the college booth or academic office.",
     "dept.cta.title": "Would you like to know more?",
-    "dept.cta.text": "Talk to the branch students at the fair or visit our booth in the college lobby",
+    "dept.cta.text": "Register now for academic advising sessions with alumni, or join the field tour of the labs and the faculty booth.",
     "dept.cta.btn": "Back to home",
 
     "union.title": "Student Union",
