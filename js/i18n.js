@@ -51,7 +51,6 @@ function applyLanguage() {
   const page = document.body.getAttribute('data-page');
   if (page === 'home') renderDeptCards();
   if (page === 'department') renderDepartment();
-  if (page === 'guide') renderGuideComparison();
   if (page === 'robotics') renderRoboticsDynamics();
   if (page === 'union') renderUnionDynamics();
   if (page === 'compare') { renderPickerChips(); if (compareSelected[1] && compareSelected[2]) runComparison(); }
@@ -163,27 +162,6 @@ function renderSemester(courses, title, color) {
   });
   html += '</div></div>';
   return html;
-}
-
-/* ---------- دليل الاختيار: بطاقات المقارنة ---------- */
-function renderGuideComparison() {
-  const grid = document.getElementById('guide-comparison');
-  if (!grid) return;
-  grid.innerHTML = '';
-  DEPARTMENTS.forEach((d) => {
-    const card = document.createElement('div');
-    card.className = 'comparison-card animate-in';
-    card.style.setProperty('--dept-color', d.color);
-    const bullets = d.guide[lang()];
-    const listHtml = bullets.map((b) => '<li>' + b + '</li>').join('');
-    card.innerHTML =
-      '<h4>' + d.title[lang()] + '</h4>' +
-      '<ul class="comparison-list">' + listHtml + '</ul>' +
-      '<a href="' + deptUrl(d.slug) + '" class="dept-card-link">' +
-      tr('guide.compare.link') + ' <span class="dept-card-arrow">&#8592;</span></a>';
-    grid.appendChild(card);
-  });
-  requestAnimationFrame(() => initScrollAnimations());
 }
 
 /* ---------- الهيئة والروبوتيك: القوائم الديناميكية ---------- */
