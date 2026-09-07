@@ -164,24 +164,8 @@ function renderSemester(courses, title, color) {
   return html;
 }
 
-/* ---------- الهيئة والروبوتيك: القوائم الديناميكية ---------- */
+/* ---------- الهيئة: خطوات الانضمام (الخدمات والمكاتب ثابتة بـ HTML) ---------- */
 function renderUnionDynamics() {
-  const list = document.getElementById('union-list');
-  if (!list) return;
-  list.innerHTML = '';
-  const items = [
-    [tr('union.s1'), tr('union.s1text'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>'],
-    [tr('union.s2'), tr('union.s2text'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>'],
-    [tr('union.s3'), tr('union.s3text'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>'],
-    [tr('union.s4'), tr('union.s4text'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>']
-  ];
-  items.forEach((it) => {
-    const item = document.createElement('div');
-    item.className = 'info-list-item';
-    item.innerHTML = '<div class="info-list-icon">' + it[2] + '</div><div><strong>' + it[0] + '</strong><p style="color:var(--text-secondary);font-size:0.875rem">' + it[1] + '</p></div>';
-    list.appendChild(item);
-  });
-
   const join = document.getElementById('union-join');
   if (!join) return;
   join.innerHTML = '';

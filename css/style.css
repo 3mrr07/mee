@@ -699,6 +699,105 @@ p { color: var(--text-secondary); }
   .footer-logos { gap: var(--space-md); }
 }
 
+/* --- UNION PAGE: service cards, offices, contact --- */
+.uni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+.uni-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.uni-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.4);
+}
+.uni-card:active { transform: translateY(-2px) scale(0.99); }
+.uni-card-icon {
+  width: 56px; height: 56px;
+  border-radius: var(--radius-lg);
+  background: #F3E5D8;
+  color: #E64B3B;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto var(--space-md);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.3);
+}
+.uni-card-icon svg { width: 26px; height: 26px; }
+.uni-card h4 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+.uni-card p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+.uni-offices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+.uni-office {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+.uni-office::before {
+  content: '';
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #E64B3B;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px color-mix(in srgb, #E64B3B 15%, transparent);
+}
+.uni-office:hover {
+  border-color: color-mix(in srgb, #E64B3B 45%, transparent);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+.union-logo {
+  width: 148px;
+  height: auto;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color-hover);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.45);
+  display: block;
+  margin: 0 auto var(--space-lg);
+}
+.uni-contact-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+}
+.uni-contact-btns .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+@media (max-width: 768px) {
+  .uni-grid { grid-template-columns: 1fr; }
+  .uni-offices { grid-template-columns: repeat(2, 1fr); }
+  .union-logo { width: 124px; }
+  .uni-contact-btns .btn { width: 100%; }
+}
+
 /* --- BUTTONS --- */
 .btn {
   display: inline-flex;

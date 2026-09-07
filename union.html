@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css?v=6">
+  <link rel="stylesheet" href="./css/style.css?v=7">
   <link rel="manifest" href="./manifest.json">
 </head>
 <body data-page="union">
@@ -46,7 +46,7 @@
       <a href="./" class="back-btn">&#8594; <span data-i18n="btn.back">العودة للرئيسية</span></a>
       <div class="dept-header-icon" style="--dept-color: var(--color-primary)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h20"/><path d="M5 10v11M19 10v11M10 10v11M14 10v11"/><path d="M12 2L3 7h18L12 2z"/></svg></div>
       <h1 data-i18n="union.title">الهيئة الطلابية</h1>
-      <p data-i18n="union.subtitle">تمثّل الطالب وتكون صوته داخل الكلية والجامعة — أنشطة، خدمات وتمثيل</p>
+      <p data-i18n="union.subtitle">المظلة التنظيمية والخدمية لطلاب كلية الهندسة الميكانيكية والكهربائية — نعمل على دعم رحلتكم الأكاديمية، وتنظيم الأنشطة والفعاليات، ومتابعة جميع الشؤون والخدمات الطلابية بالتنسيق مع إدارة الكلية واتحاد الطلبة.</p>
     </div>
   </section>
 
@@ -55,44 +55,75 @@
     <div class="container">
       <div class="info-card">
         <h3 data-i18n="union.whatIs">ما هي الهيئة الطلابية؟</h3>
-        <p style="color:var(--text-secondary);line-height:2" data-i18n="union.whatIsText"></p>
+        <p style="color:var(--text-secondary);line-height:2" data-i18n="union.whatIsText">الهيئة الطلابية هي المظلة التنظيمية التابعة لاتحاد الطلبة في الكلية، وتتولى تنظيم الأنشطة والفعاليات، ومتابعة القضايا الإدارية والأكاديمية للطلاب، وتقديم الخدمات المباشرة لتسهيل وتطوير الحياة الجامعية.</p>
       </div>
 
       <div class="info-card">
         <h3 data-i18n="union.services">خدماتها ودورها</h3>
-        <div id="union-list" class="info-list"></div>
+        <div class="uni-grid">
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <h4 data-i18n="union.s1">التمثيل والخدمات الطلابية</h4>
+            <p data-i18n="union.s1text">متابعة قضايا الطلاب وحل مشكلاتهم الإدارية والشؤون الدراسية بالتنسيق مع إدارة الكلية والاتحاد.</p>
+          </div>
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <h4 data-i18n="union.s2">الأنشطة والفعاليات</h4>
+            <p data-i18n="union.s2text">تنظيم الفعاليات والمعارض، المسابقات، والندوات الأكاديمية والرياضية والاجتماعية على مدار العام الدراسي.</p>
+          </div>
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <h4 data-i18n="union.s3">الدعم الأكاديمي</h4>
+            <p data-i18n="union.s3text">توفير الملخصات والملفات الدراسية ومتابعة الملاحظات والطلبات الأكاديمية للطلاب.</p>
+          </div>
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            <h4 data-i18n="union.s4">التدريب والتطوير</h4>
+            <p data-i18n="union.s4text">تقديم ورشات تدريبية وتطويرية لتأهيل الطلاب وصقل مهاراتهم العملية والتقنية.</p>
+          </div>
+        </div>
       </div>
 
       <div class="info-card">
-        <h3 data-i18n="union.join">كيف تنضم؟</h3>
+        <h3 data-i18n="union.offices">مكاتب الهيئة الطلابية</h3>
+        <div class="uni-offices">
+          <div class="uni-office" data-i18n="union.o1">مكتب التنظيم</div>
+          <div class="uni-office" data-i18n="union.o2">مكتب الفعاليات</div>
+          <div class="uni-office" data-i18n="union.o3">مكتب الإعلام</div>
+          <div class="uni-office" data-i18n="union.o4">المكتب الأكاديمي</div>
+          <div class="uni-office" data-i18n="union.o5">مكتب المتابعة</div>
+          <div class="uni-office" data-i18n="union.o6">مكتب التدريب</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3 data-i18n="union.join">كيف تنضم كمتطوع؟</h3>
         <div id="union-join" class="info-list"></div>
       </div>
 
       <div class="info-card text-center">
+        <img src="./img/mee-logo.png?v=2" class="union-logo" alt="شعار الهيئة الطلابية">
         <h3 data-i18n="union.contact">تواصل معنا</h3>
-        <p class="mb-xl" style="color:var(--text-secondary)" data-i18n="union.contactText"></p>
-        <div style="width:120px;height:120px;border-radius:50%;background:var(--bg-primary);border:2px dashed var(--border-color);margin:0 auto;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:0.8rem" data-i18n="placeholder.logo">
-          شعار الهيئة
+        <p class="mb-xl" style="color:var(--text-secondary)" data-i18n="union.contactText">للاستفسار، متابعة آخر الإعلانات، أو التقديم على استمارات التطوع عند فتحها، يمكنك زيارة ركننا في الملتقى أو متابعتنا عبر قنواتنا الرسمية:</p>
+        <div class="uni-contact-btns">
+          <a href="https://www.instagram.com/mee.homs.uni?stkn=ODdhYmk5dXdyb2s=" target="_blank" rel="noopener" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <span data-i18n="union.insta">إنستغرام</span></a>
+          <a href="https://t.me/Mee2025HMK" target="_blank" rel="noopener" class="btn btn-outline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg> <span data-i18n="union.tele">تلغرام</span></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer (text only: logos already showcased above) -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-logos">
-        <img src="./img/mee-logo.png?v=2" class="footer-logo" alt="شعار الهيئة الطلابية - كلية الهندسة الميكانيكية والكهربائية">
-        <img src="./img/itihad-logo.png?v=2" class="footer-logo" alt="شعار اتحاد طلبة سوريا - فرع حمص">
-      </div>
       <p data-i18n="footer.line1">ملتقى وجهتك الأكاديمية 2026 - كلية الهندسة الميكانيكية والكهربائية - جامعة حمص</p>
       <p class="mt-sm" style="font-size:0.75rem" data-i18n="footer.line2">إعداد: اتحاد طلبة سوريا - فرع حمص</p>
     </div>
   </footer>
 
   <script src="./js/site-data.js?v=6"></script>
-  <script src="./js/translations.js?v=4"></script>
-  <script src="./js/i18n.js?v=4"></script>
+  <script src="./js/translations.js?v=5"></script>
+  <script src="./js/i18n.js?v=5"></script>
   <script src="./js/main.js?v=4"></script>
 </body>
 </html>
