@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hme-v11';
+const CACHE_NAME = 'hme-v12';
 const ASSETS = [
   './',
   './index.html',
@@ -23,7 +23,11 @@ const ASSETS = [
   './manifest.json',
   './img/favicon.svg',
   './img/icon-192.png',
-  './img/icon-512.png'
+  './img/icon-512.png',
+  './img/mee-logo.png',
+  './img/mee-icon.png',
+  './img/itihad-logo.png',
+  './img/itihad-icon.png'
 ];
 
 self.addEventListener('install', (event) => {

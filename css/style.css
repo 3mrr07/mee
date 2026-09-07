@@ -192,16 +192,13 @@ p { color: var(--text-secondary); }
   white-space: nowrap;
   min-width: 0;
 }
-.topbar-logo .logo-placeholder {
+.topbar-logo-img {
   width: 40px; height: 40px;
   flex: 0 0 40px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(140deg, #1E4A40, #173F37);
+  border-radius: 50%;
+  object-fit: cover;
+  background: #000;
   border: 1px solid var(--border-color-hover);
-  color: var(--color-primary);
-  font-weight: 800;
-  font-size: var(--text-lg);
-  display: flex; align-items: center; justify-content: center;
   box-shadow: var(--shadow-sm);
 }
 .topbar-actions { display: flex; align-items: center; gap: var(--space-sm); }
@@ -238,7 +235,7 @@ p { color: var(--text-secondary); }
 /* --- NAVIGATION (Mobile) --- */
 @media (max-width: 768px) {
   .topbar-inner { height: 56px; }
-  .topbar-logo .logo-placeholder { width: 34px; height: 34px; flex: 0 0 34px; font-size: var(--text-md); }
+  .topbar-logo-img { width: 34px; height: 34px; flex: 0 0 34px; }
   .topbar-logo span { font-size: 0.8rem; }
   .topbar-btn { width: 36px; height: 36px; font-size: var(--text-md); }
   .lang-toggle { font-size: 0.75rem; padding: 0 10px; }
@@ -677,6 +674,42 @@ p { color: var(--text-secondary); }
   background: var(--color-primary);
 }
 .footer p { color: var(--text-muted); font-size: var(--text-sm); }
+
+/* --- LOGOS (MEE + Union) --- */
+.hero-logo {
+  width: 132px; height: 132px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto var(--space-lg);
+  background: #000;
+  border: 2px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--color-primary) 12%, transparent),
+    0 18px 44px -12px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 0.6s var(--ease-out) both;
+}
+.footer-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+.footer-logo {
+  height: 104px;
+  width: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  background: #000;
+}
+@media (max-width: 768px) {
+  .hero-logo { width: 104px; height: 104px; }
+  .footer-logo { height: 84px; }
+  .footer-logos { gap: var(--space-md); }
+}
 
 /* --- BUTTONS --- */
 .btn {
