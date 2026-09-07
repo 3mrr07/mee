@@ -791,6 +791,27 @@ p { color: var(--text-secondary); }
   margin-top: var(--space-md);
 }
 .uni-contact-btns .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.uni-contact-btns .btn { min-width: 180px; }
+.uni-contact-btns .btn-insta {
+  background: linear-gradient(45deg, #F58529 0%, #DD2A7B 55%, #8134AF 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 10px 24px -8px rgba(221, 42, 123, 0.55);
+}
+.uni-contact-btns .btn-insta:hover {
+  box-shadow: 0 16px 34px -10px rgba(221, 42, 123, 0.7);
+  filter: brightness(1.06);
+}
+.uni-contact-btns .btn-tele {
+  background: linear-gradient(180deg, #2AABEE 0%, #229ED9 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 10px 24px -8px rgba(34, 158, 217, 0.55);
+}
+.uni-contact-btns .btn-tele:hover {
+  box-shadow: 0 16px 34px -10px rgba(34, 158, 217, 0.7);
+  filter: brightness(1.06);
+}
 @media (max-width: 768px) {
   .uni-grid { grid-template-columns: 1fr; }
   .uni-offices { grid-template-columns: repeat(2, 1fr); }
