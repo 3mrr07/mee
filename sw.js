@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hme-v12';
+const CACHE_NAME = 'hme-v13';
 const ASSETS = [
   './',
   './index.html',
@@ -25,7 +25,6 @@ const ASSETS = [
   './img/icon-192.png',
   './img/icon-512.png',
   './img/mee-logo.png',
-  './img/mee-icon.png',
   './img/itihad-logo.png',
   './img/itihad-icon.png'
 ];

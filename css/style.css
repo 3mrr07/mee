@@ -197,7 +197,6 @@ p { color: var(--text-secondary); }
   flex: 0 0 40px;
   border-radius: 50%;
   object-fit: cover;
-  background: #000;
   border: 1px solid var(--border-color-hover);
   box-shadow: var(--shadow-sm);
 }
@@ -675,19 +674,10 @@ p { color: var(--text-secondary); }
 }
 .footer p { color: var(--text-muted); font-size: var(--text-sm); }
 
-/* --- LOGOS (MEE + Union) --- */
-.hero-logo {
-  width: 132px; height: 132px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto var(--space-lg);
-  background: #000;
-  border: 2px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
-  box-shadow:
-    0 0 0 6px color-mix(in srgb, var(--color-primary) 12%, transparent),
-    0 18px 44px -12px rgba(0, 0, 0, 0.5);
-  animation: fadeInUp 0.6s var(--ease-out) both;
+/* --- LOGOS (MEE + Union, transparent bg) --- */
+[data-theme="light"] .topbar-logo-img,
+[data-theme="light"] .footer-logo {
+  filter: invert(1);
 }
 .footer-logos {
   display: flex;
@@ -703,10 +693,8 @@ p { color: var(--text-secondary); }
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
-  background: #000;
 }
 @media (max-width: 768px) {
-  .hero-logo { width: 104px; height: 104px; }
   .footer-logo { height: 84px; }
   .footer-logos { gap: var(--space-md); }
 }
