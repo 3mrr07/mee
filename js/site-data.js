@@ -533,7 +533,7 @@ const DEPARTMENTS = [
     tagline: { ar: "الدوائر الإلكترونية وأشباه الموصلات وأنظمة الاتصال الحديثة", en: "Electronic circuits, semiconductors and modern communication systems" },
     about: {
       ar: "الأمر لا يتعلق بـ «إصلاح الهواتف»! بل هو الفن الهندسي المسؤول عن توليد، نقل، واستقبال الإشارات والمعلومات في العالم الرقمي. باختصار: أنت من يجعل الأجهزة الذكية تتحدث مع بعضها!",
-      en: "It is not about "repairing phones"! It is the engineering art of generating, transmitting and receiving signals and information in the digital world. In short: you are the one who makes smart devices talk to each other!"
+      en: "It is not about \"repairing phones\"! It is the engineering art of generating, transmitting and receiving signals and information in the digital world. In short: you are the one who makes smart devices talk to each other!"
     },
     careers: {
       ar: [
