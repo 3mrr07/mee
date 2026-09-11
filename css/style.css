@@ -505,18 +505,22 @@ p { color: var(--text-secondary); }
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: var(--space-2xl);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
   box-shadow: var(--shadow-sm);
+  scroll-margin-top: 24px;
 }
 .info-card:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--color-primary) 32%, transparent);
-  box-shadow:
-    0 16px 40px -12px rgba(0, 0, 0, 0.3),
-    0 0 28px -10px color-mix(in srgb, var(--color-primary) 45%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 26%, transparent);
 }
-.info-card:active { transform: translateY(-1px); }
-.info-card h3 { font-size: var(--text-2xl); margin-bottom: var(--space-lg); display: flex; align-items: center; gap: var(--space-sm); }
+.info-card h3 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
 .info-card h3 svg { width: 26px; height: 26px; color: var(--color-primary); }
 
 .info-list { display: flex; flex-direction: column; gap: var(--space-md); }
@@ -712,14 +716,12 @@ p { color: var(--text-secondary); }
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg);
   text-align: center;
-  transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .uni-card:hover {
-  transform: translateY(-5px);
-  border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
-  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.4);
+  border-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  box-shadow: 0 12px 28px -16px rgba(0, 0, 0, 0.35);
 }
-.uni-card:active { transform: translateY(-2px) scale(0.99); }
 .uni-card-icon {
   width: 56px; height: 56px;
   border-radius: var(--radius-lg);
@@ -1395,6 +1397,24 @@ p { color: var(--text-secondary); }
 .compare-course-tag:hover {
   background: color-mix(in srgb, #E64B3B 18%, transparent);
   transform: translateY(-1px);
+}
+.compare-course-tag--alt {
+  background: color-mix(in srgb, #1A433A 10%, transparent);
+  border-color: color-mix(in srgb, #1A433A 28%, transparent);
+}
+.compare-course-tag--alt:hover {
+  background: color-mix(in srgb, #1A433A 18%, transparent);
+}
+.compare-course-tag--challenge {
+  background: color-mix(in srgb, #F59E0B 12%, transparent);
+  border-color: color-mix(in srgb, #F59E0B 30%, transparent);
+}
+.compare-course-tag--challenge:hover {
+  background: color-mix(in srgb, #F59E0B 20%, transparent);
+}
+.compare-course-tag--note {
+  background: color-mix(in srgb, #E64B3B 6%, transparent);
+  border-style: dashed;
 }
 .compare-count {
   display: inline-flex;

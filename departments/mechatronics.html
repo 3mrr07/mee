@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=8">
+  <link rel="stylesheet" href="../css/style.css?v=9">
   <link rel="manifest" href="../manifest.json">
 </head>
 <body data-page="department" data-department="mechatronics">
@@ -50,18 +50,131 @@
     </div>
   </section>
 
-  <!-- Overview + Careers -->
+  <!-- Content Sections -->
   <section class="section" style="padding-top:var(--space-2xl)">
     <div class="container">
-      <div class="info-card">
-        <h3 id="dept-about-title">ما هو هذا الفرع؟</h3>
-        <p id="dept-about-text" style="color:var(--text-secondary);line-height:2"></p>
+
+      <!-- 1. About -->
+      <div class="info-card animate-in text-center">
+        <h3 data-i18n="mech.aboutTitle">هندسة الميكاترونيك</h3>
+        <p class="mt-sm" style="color:var(--color-primary);font-weight:700;font-size:var(--text-lg)" data-i18n="mech.aboutSubtitle">الدمج بين الميكانيكا والكهرباء والبرمجيات لتصميم الأنظمة الذكية</p>
       </div>
 
-      <div class="info-card">
-        <h3 id="dept-careers-title">مجالات العمل</h3>
-        <div id="dept-careers-list" class="info-list"></div>
+      <!-- 2. Self-guidance -->
+      <div class="info-card animate-in text-center">
+        <h3 data-i18n="mech.selfTitle">بدل أن تسأل: هل أنا جيد بالبرمجة؟</h3>
+        <p style="color:var(--text-secondary)" data-i18n="mech.selfLead">اسأل نفسك:</p>
+        <p class="mt-sm" style="font-weight:700;color:var(--text-primary)" data-i18n="mech.selfQ">«هل أستمتع بفهم وبناء أنظمة ذكية تجمع بين الحركة والحساسات والبرمجة معاً لتعمل بسلاسة؟»</p>
       </div>
+
+      <!-- 3. Misconceptions -->
+      <div class="info-card animate-in">
+        <h3 data-i18n="mech.misconceptionTitle">تصحيح مفاهيم حول التخصص</h3>
+        <p class="mb-md" style="color:var(--text-primary);font-weight:600" data-i18n="mech.misconceptionQ">هل الميكاترونيك مجرد «إصلاح الأجهزة والآلات»؟</p>
+        <p style="color:var(--text-secondary);line-height:1.7" data-i18n="mech.misconceptionText">الحقيقة أن إصلاح الأجهزة هو جزء بسيط جداً مقارنة بالصورة الكبيرة: أنت هنا تصمّم وتبني الروبوتات والأنظمة الذكية وخطوط الإنتاج الأوتوماتيكية من الصفر حتى التنفيذ.</p>
+      </div>
+
+      <!-- 4. Subjects -->
+      <div class="info-card animate-in">
+        <h3 data-i18n="mech.topTitle">ماذا يدرس طالب الميكاترونيك؟</h3>
+        <p class="mb-lg" style="color:var(--text-secondary);line-height:1.7" data-i18n="mech.topIntro">تبدأ بالعلوم الأساسية، ثم تغوص في المقررات التي تجمع التخصصات لتدرس:</p>
+        <div class="compare-common-list">
+          <span class="compare-course-tag" data-i18n="mech.t1">الميكانيك وتصميم الآلات ونقل الحركة</span>
+          <span class="compare-course-tag" data-i18n="mech.t2">الحساسات والمجسات والإلكترونيات</span>
+          <span class="compare-course-tag" data-i18n="mech.t3">البرمجة وأنظمة التحكم (PLC و SCADA)</span>
+        </div>
+      </div>
+
+      <!-- 5. Study nature -->
+      <div class="info-card animate-in">
+        <h3 data-i18n="mech.natTitle">كيف ستمر سنوات دراستك؟</h3>
+        <p class="mb-md" style="color:var(--text-secondary);line-height:1.7" data-i18n="mech.natLead">الدراسة توازن ذكي بين:</p>
+        <div class="compare-common-list">
+          <span class="compare-course-tag compare-course-tag--alt" data-i18n="mech.natTheory">الجانب النظري: رياضيات وفيزياء وأسس الميكانيك والكهرباء</span>
+          <span class="compare-course-tag compare-course-tag--alt" data-i18n="mech.natPractice">الجانب التطبيقي: مخابر الحساسات والبرمجة والروبوتات</span>
+        </div>
+        <div style="margin-top:var(--space-lg);padding:var(--space-md) var(--space-lg);border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-primary) 10%, transparent);border:1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);font-size:var(--text-sm);color:var(--text-secondary);text-align:center" data-i18n="mech.natNote">سر النجاح هنا هو قدرتك على الجمع بين أكثر من تخصص داخل مشروع واحد متكامل.</div>
+      </div>
+
+      <!-- 6. Duration -->
+      <div class="info-card animate-in">
+        <h3 data-i18n="mech.durTitle">كم سنة ستقضي في الجامعة؟</h3>
+        <p class="mb-md" style="color:var(--text-secondary);line-height:1.7" data-i18n="mech.durLead">دراسة هندسة الميكاترونيك في جامعة حمص تمتد لخمس سنوات، تتوزع كالتالي:</p>
+        <div class="compare-common-list">
+          <span class="compare-course-tag compare-course-tag--alt" data-i18n="mech.dur1">البداية: علوم أساسية ولغات ومبادئ الحاسوب</span>
+          <span class="compare-course-tag compare-course-tag--alt" data-i18n="mech.dur2">المنتصف: مقررات الميكانيك والكهرباء والحساسات والتحكم</span>
+          <span class="compare-course-tag compare-course-tag--alt" data-i18n="mech.dur3">النهاية: مشاريع متكاملة وروبوتات وأتمتة</span>
+        </div>
+      </div>
+
+      <!-- 7. Smart comparison -->
+      <div class="info-card animate-in">
+        <h3 data-i18n="mech.cmpTitle">مقارنة ذكية بين المهندسين</h3>
+        <div class="uni-grid">
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <h4 data-i18n="mech.cmpLeft">هندسة الميكانيك</h4>
+            <p style="font-weight:600;color:var(--text-primary)"><span data-i18n="mech.cmpFocus">التركيز الأساسي:</span></p>
+            <p data-i18n="mech.cmpLeftFocus">الأنظمة الميكانيكية والحركة ونقل القدرة</p>
+            <p style="font-weight:600;color:var(--text-primary);margin-top:var(--space-md)"><span data-i18n="mech.cmpApp">مجال التطبيق:</span></p>
+            <p data-i18n="mech.cmpLeftApp">تصميم الآلات والمنظومات الميكانيكية</p>
+          </div>
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 4v4"/><path d="M9 4h6"/><circle cx="8.5" cy="13.5" r="1"/><circle cx="15.5" cy="13.5" r="1"/><path d="M9 16.5h6"/></svg></div>
+            <h4 data-i18n="mech.cmpRight">هندسة الميكاترونيك</h4>
+            <p style="font-weight:600;color:var(--color-primary)"><span data-i18n="mech.cmpFocus">التركيز الأساسي:</span></p>
+            <p data-i18n="mech.cmpRightFocus">دمج الميكانيكا والكهرباء والبرمجيات</p>
+            <p style="font-weight:600;color:var(--color-primary);margin-top:var(--space-md)"><span data-i18n="mech.cmpApp">مجال التطبيق:</span></p>
+            <p data-i18n="mech.cmpRightApp">الروبوتات والأتمتة والأنظمة الذكية</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Strengths & Challenges -->
+      <div class="info-card animate-in">
+        <h3 data-i18n="mech.stchTitle">ميزات التخصص وتحدياته</h3>
+        <div class="uni-grid">
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+            <h4 data-i18n="mech.featTitle">الميزة الفائقة</h4>
+            <p data-i18n="mech.featText">تصبح مهندساً شاملاً يرى النظام كاملاً من الفكرة إلى التنفيذ، ويمتلك مهارات متعددة تجعله مطلوباً في أكثر من مجال.</p>
+          </div>
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+            <h4 data-i18n="mech.chalTitle">التحدي الأكبر</h4>
+            <p data-i18n="mech.chalText">اتساع التخصص يلزمك بالتوفيق بين أكثر من علم في وقت واحد، والتعمق في كلٍّ منها؛ قد يكون شاقاً لمن يفضّل التخصص الضيق.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Careers -->
+      <div class="info-card animate-in">
+        <h3 data-i18n="mech.careersTitle">أين ستعمل بعد التخرج؟</h3>
+        <p class="mb-md" style="color:var(--text-secondary);line-height:1.7" data-i18n="mech.careersLead">سوق العمل ينتظرك في القطاعات التالية:</p>
+        <div class="uni-grid">
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V8l5 4V8l5 4V4h6v16"/></svg></div>
+            <h4 data-i18n="mech.k1t">التصنيع الأوتوماتيكي (Automated Manufacturing)</h4>
+            <p data-i18n="mech.k1d">تصميم خطوط الإنتاج الذكية والإشراف على تشغيلها.</p>
+          </div>
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 4v4"/><path d="M9 4h6"/><circle cx="8.5" cy="13.5" r="1"/><circle cx="15.5" cy="13.5" r="1"/><path d="M9 16.5h6"/></svg></div>
+            <h4 data-i18n="mech.k2t">الروبوتات (Robotics)</h4>
+            <p data-i18n="mech.k2d">تصميم وبرمجة الروبوتات الصناعية وتشغيلها.</p>
+          </div>
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <h4 data-i18n="mech.k3t">أنظمة التحكم (PLC و SCADA)</h4>
+            <p data-i18n="mech.k3d">تصميم وإعداد منظومات التحكم في المنشآت الصناعية.</p>
+          </div>
+          <div class="uni-card">
+            <div class="uni-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></div>
+            <h4 data-i18n="mech.k4t">البحث والتطوير (R&D)</h4>
+            <p data-i18n="mech.k4d">تقديم حلول تقنية مبتكرة وتطوير منتجات ذكية جديدة.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -74,7 +187,7 @@
         <p><span data-i18n="dept.study.subtitle">الخطة الدراسية الكاملة لفرع</span> <span id="dept-study-name"></span></p>
       </div>
       <div id="study-plan"></div>
-      <div class="info-card mt-xl text-center">
+      <div class="info-card animate-in mt-xl text-center">
         <p style="color:var(--text-muted);font-size:0.875rem" data-i18n="dept.note">الخطة أدناه تقريبية لعرض المواد العامة — القائمة الرسمية الكاملة تصلك من ركن الكلية أو مكتب التعليم.</p>
       </div>
     </div>
@@ -102,7 +215,7 @@
   </footer>
 
   <script src="../js/site-data.js?v=8"></script>
-  <script src="../js/translations.js?v=9"></script>
+  <script src="../js/translations.js?v=10"></script>
   <script src="../js/i18n.js?v=5"></script>
   <script src="../js/main.js?v=4"></script>
 </body>
