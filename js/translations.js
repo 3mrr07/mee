@@ -11,14 +11,9 @@ const TRANSLATIONS = {
     "page.title.guide": "كيف تختار تخصصك؟ | كلية الهندسة",
     "page.title.union": "الهيئة الطلابية | كلية الهندسة",
     "page.title.robotics": "نادي الروبوتيك | كلية الهندسة",
-    "nav.home": "الرئيسية",
-    "nav.union": "الهيئة",
-    "nav.robotics": "الروبوتيك",
-    "nav.guide": "الدليل",
     "lang.label": "EN",
     "theme.darkAria": "الوضع الليلي",
     "theme.lightAria": "الوضع النهاري",
-    "nav.menu": "القائمة",
 
     // الرئيسية
     "home.badge": "ملتقى وجهتك الأكاديمية 2026",
@@ -50,8 +45,6 @@ const TRANSLATIONS = {
 
     // صفحات الأفرع
     "btn.back": "العودة للرئيسية",
-    "dept.whatIs": "ما هو هذا الفرع؟",
-    "dept.careers": "مجالات العمل",
     "dept.study.label": "الخطة الدراسية",
     "dept.study.title": "5 سنوات - 10 فصول",
     "dept.study.subtitle": "الخطة الدراسية الكاملة لفرع",
@@ -64,7 +57,6 @@ const TRANSLATIONS = {
 
     // الهيئة الطلابية
     "union.title": "الهيئة الطلابية",
-    "union.badge": "من نحن",
     "union.subtitle": "المظلة التنظيمية والخدمية لطلاب كلية الهندسة الميكانيكية والكهربائية — نعمل على دعم رحلتكم الأكاديمية، وتنظيم الأنشطة والفعاليات، ومتابعة جميع الشؤون والخدمات الطلابية بالتنسيق مع إدارة الكلية واتحاد الطلبة.",
     "union.whatIs": "ما هي الهيئة الطلابية؟",
     "union.whatIsText": "الهيئة الطلابية هي المظلة التنظيمية التابعة لاتحاد الطلبة في الكلية، وتتولى تنظيم الأنشطة والفعاليات، ومتابعة القضايا الإدارية والأكاديمية للطلاب، وتقديم الخدمات المباشرة لتسهيل وتطوير الحياة الجامعية.",
@@ -126,7 +118,6 @@ const TRANSLATIONS = {
 
     // دليل الاختيار
     "guide.title": "كيف تختار تخصصك؟",
-    "guide.badge": "دليل طالب",
     "guide.subtitle": "خمسة أسئلة تساعدك على اتخاذ قرارك الأكاديمي بوعي",
     "guide.step1": "اعرف نفسك أولاً",
     "guide.step1intro": "قبل اختيار الفرع، أجب عن هذه الأسئلة بنفسك:",
@@ -149,7 +140,6 @@ const TRANSLATIONS = {
     // عام
     // اختبار تخصصك
     "page.title.quiz": "اختبر تخصصك؟ | كلية الهندسة",
-    "quiz.badge": "اختبار تفاعلي",
     "quiz.title": "اختبر تخصصك",
     "quiz.subtitle": "7 أسئلة سريعة تساعدك على اكتشاف الفرع الهندسي الأنسب لك",
     "quiz.start": "ابدأ الاختبار",
@@ -158,10 +148,8 @@ const TRANSLATIONS = {
     "quiz.finish": "أظهر النتيجة",
     "quiz.retake": "أعد الاختبار",
     "quiz.resultTitle": "نتيجتك",
-    "quiz.topPick": "أعلى تطابق",
     "quiz.match": "تطابق",
     "quiz.viewDept": "شاهد الفرع",
-    "quiz.share": "شارك نتيجتك",
     "quiz.disclaimer": "هذه النتيجة تقريبية وليس لها طابع رسمي. الهدف هو مساعدتك على التفكير والتعرف على اتجاهاتك — تأكد من البحث أكثر عن شغفك ورغباتك والتحدث مع الخريجين واختيار الفرع الذي يسعدك ويحقق طموحاتك.",
 
     // مقارنة الأفرع
@@ -184,8 +172,6 @@ const TRANSLATIONS = {
     "offline.title": "لا يوجد اتصال بالإنترنت",
     "offline.text": "يبدو أنك غير متصل الآن، لكنك تستطيع تصفح ما تم تحميله مسبقاً.",
     "offline.retry": "إعادة المحاولة",
-    "load.title": "جارٍ تحويلك إلى الموقع",
-    "load.link": "اضغط هنا إن لم يُحوَّل تلقائياً",
 
     // صفحة هندسة القوى الميكانيكية
     "qow.aboutTitle": "هندسة القوى الميكانيكية: ماذا ينبغي أن تعرف قبل أن تختارها؟",
@@ -459,14 +445,9 @@ const TRANSLATIONS = {
     "page.title.guide": "How to Choose Your Major? | Engineering Faculty",
     "page.title.union": "Student Union | Engineering Faculty",
     "page.title.robotics": "Robotics Club | Engineering Faculty",
-    "nav.home": "Home",
-    "nav.union": "Union",
-    "nav.robotics": "Robotics",
-    "nav.guide": "Guide",
     "lang.label": "عربي",
     "theme.darkAria": "Dark mode",
     "theme.lightAria": "Light mode",
-    "nav.menu": "Menu",
 
     "home.badge": "Academic Destination Fair 2026",
     "home.title1": "Discover Your Major.",
@@ -496,8 +477,6 @@ const TRANSLATIONS = {
     "card.robotics.det": "Join us",
 
     "btn.back": "Back to home",
-    "dept.whatIs": "What is this branch?",
-    "dept.careers": "Career Paths",
     "dept.study.label": "Study Plan",
     "dept.study.title": "5 Years - 10 Semesters",
     "dept.study.subtitle": "The full study plan of",
@@ -509,7 +488,6 @@ const TRANSLATIONS = {
     "dept.cta.btn": "Back to home",
 
     "union.title": "Student Union",
-    "union.badge": "About us",
     "union.subtitle": "The organisational and service umbrella for students of the Faculty of Mechanical & Electrical Engineering — supporting your academic journey, organising activities and events, and following up on all student affairs and services in coordination with the faculty administration and the Students Union.",
     "union.whatIs": "What is the Student Union?",
     "union.whatIsText": "The Student Union is the organisational umbrella of the Students Union in the faculty. It organises activities and events, follows up on students' administrative and academic matters, and provides direct services to facilitate and enrich university life.",
@@ -569,7 +547,6 @@ const TRANSLATIONS = {
     "placeholder.clubLogo": "Club logo",
 
     "guide.title": "How to choose your major?",
-    "guide.badge": "Student guide",
     "guide.subtitle": "Five questions to help you make an informed academic decision",
     "guide.step1": "Know yourself first",
     "guide.step1intro": "Before choosing a branch, answer these questions honestly:",
@@ -591,7 +568,6 @@ const TRANSLATIONS = {
 
     // Quiz
     "page.title.quiz": "Test Your Major? | Engineering Faculty",
-    "quiz.badge": "Interactive quiz",
     "quiz.title": "Discover Your Major",
     "quiz.subtitle": "7 quick questions to find the best engineering branch for you",
     "quiz.start": "Start the quiz",
@@ -600,10 +576,8 @@ const TRANSLATIONS = {
     "quiz.finish": "Show result",
     "quiz.retake": "Retake",
     "quiz.resultTitle": "Your result",
-    "quiz.topPick": "Top match",
     "quiz.match": "match",
     "quiz.viewDept": "View department",
-    "quiz.share": "Share your result",
     "quiz.disclaimer": "This result is an estimate and has no official status. It is meant to help you think about your direction — make sure to research more about your passion, talk to graduates, and choose the branch that makes you happy and fulfils your ambitions.",
 
     // Compare
@@ -626,8 +600,6 @@ const TRANSLATIONS = {
     "offline.title": "No internet connection",
     "offline.text": "You seem to be offline, but you can still browse what was loaded before.",
     "offline.retry": "Try again",
-    "load.title": "Redirecting to the website",
-    "load.link": "Click here if you are not redirected automatically",
 
     // Mechanical Power Engineering page
     "qow.aboutTitle": "Mechanical Power Engineering: What Should You Know Before Choosing It?",

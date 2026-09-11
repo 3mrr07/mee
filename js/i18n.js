@@ -104,30 +104,8 @@ function renderDepartment() {
   if (headerTag) headerTag.textContent = d.tagline[L];
   document.title = d.title[L] + ' | ' + tr('nav.brand');
 
-  const aboutTitle = document.getElementById('dept-about-title');
-  const aboutText = document.getElementById('dept-about-text');
-  if (aboutTitle) aboutTitle.textContent = tr('dept.whatIs');
-  if (aboutText) aboutText.textContent = d.about[L];
-
   const studyName = document.getElementById('dept-study-name');
   if (studyName) studyName.textContent = d.name[L];
-
-  const careersTitle = document.getElementById('dept-careers-title');
-  if (careersTitle) careersTitle.textContent = tr('dept.careers');
-
-  const careersList = document.getElementById('dept-careers-list');
-  if (careersList) {
-    careersList.innerHTML = '';
-    d.careers[L].forEach((c) => {
-      const item = document.createElement('div');
-      item.className = 'info-list-item';
-      item.innerHTML =
-        '<div class="info-list-icon">' + c.icon + '</div>' +
-        '<div><strong>' + c.title + '</strong>' +
-        '<p style="color:var(--text-secondary);font-size:0.875rem">' + c.text + '</p></div>';
-      careersList.appendChild(item);
-    });
-  }
 
   renderStudyPlan(d, L);
 }

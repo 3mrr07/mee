@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hme-v18';
+const CACHE_NAME = 'hme-v19';
 const ASSETS = [
   './',
   './index.html',
