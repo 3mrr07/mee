@@ -7,14 +7,6 @@ const TRANSLATIONS = {
   ar: {
     // شريط العلوي
     "nav.brand": "كلية الهندسة الميكانيكية والكهربائية",
-    "nav.home": "الرئيسية",
-    "nav.departments": "الأفرع",
-    "nav.guide": "الدليل",
-    "nav.quiz": "الاختبار",
-    "nav.compare": "المقارنة",
-    "nav.union": "الهيئة",
-    "nav.robotics": "الروبوتيك",
-    "nav.menu": "القائمة",
     "page.title.home": "وجهتك الأكاديمية | كلية الهندسة الميكانيكية والكهربائية",
     "page.title.guide": "كيف تختار تخصصك؟ | كلية الهندسة",
     "page.title.union": "الهيئة الطلابية | كلية الهندسة",
@@ -472,14 +464,6 @@ const TRANSLATIONS = {
 
   en: {
     "nav.brand": "Mechanical & Electrical Engineering",
-    "nav.home": "Home",
-    "nav.departments": "Departments",
-    "nav.guide": "Guide",
-    "nav.quiz": "Quiz",
-    "nav.compare": "Compare",
-    "nav.union": "Union",
-    "nav.robotics": "Robotics",
-    "nav.menu": "Menu",
     "page.title.home": "Your Academic Destination | Faculty of Mechanical & Electrical Engineering",
     "page.title.guide": "How to Choose Your Major? | Engineering Faculty",
     "page.title.union": "Student Union | Engineering Faculty",
