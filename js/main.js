@@ -51,12 +51,32 @@ function scrollToSection(id) {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+// --- Mobile Nav Menu ---
+function toggleNavMenu() {
+  const nav = document.getElementById('topbar-nav');
+  if (nav) nav.classList.toggle('open');
+}
+
+function closeNavMenu() {
+  const nav = document.getElementById('topbar-nav');
+  if (nav) nav.classList.remove('open');
+}
+
 // --- Active Nav State ---
 function initActiveNav() {
-  const path = location.pathname.replace(/\/+$/, '') || '/';
-  document.querySelectorAll('.topbar-actions a').forEach((link) => {
-    const href = link.getAttribute('href');
-    if (href && href.replace(/\/+$/, '') === path) link.classList.add('active');
+  function normalize(path) {
+    return decodeURIComponent(path).replace(/\/+/g, '/').replace(/\/+$/, '') || '/index.html';
+  }
+  var current = normalize(location.pathname);
+  document.querySelectorAll('.topbar-nav a').forEach(function (link) {
+    var href = link.getAttribute('href');
+    if (!href || href.indexOf('#') > -1) return;
+    var resolved = normalize(new URL(href, location.href).pathname);
+    if (resolved === current ||
+        (current === '/index.html' && resolved === '/') ||
+        (resolved === '/index.html' && current === '/')) {
+      link.classList.add('active');
+    }
   });
 }
 
@@ -65,6 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const theme = initTheme();
   updateThemeIcon(theme);
   initActiveNav();
+  document.querySelectorAll('.topbar-nav a').forEach((link) => {
+    link.addEventListener('click', closeNavMenu);
+  });
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.topbar, .topbar-nav')) closeNavMenu();
+  });
   requestAnimationFrame(initScrollAnimations);
 });
 

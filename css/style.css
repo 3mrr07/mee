@@ -201,6 +201,36 @@ p { color: var(--text-secondary); }
   box-shadow: var(--shadow-sm);
 }
 .topbar-actions { display: flex; align-items: center; gap: var(--space-sm); }
+
+/* --- Topbar Navigation --- */
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-inline-start: var(--space-md);
+}
+.topbar-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+.topbar-nav a:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+.topbar-nav a.active {
+  color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+.topbar-menu-btn { display: none; }
+
 .topbar-btn {
   display: flex;
   align-items: center; justify-content: center;
@@ -225,11 +255,6 @@ p { color: var(--text-secondary); }
   width: auto;
   padding: 0 var(--space-md);
 }
-.topbar-actions a.active {
-  color: var(--color-primary);
-  border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
-  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
-}
 
 /* --- NAVIGATION (Mobile) --- */
 @media (max-width: 768px) {
@@ -238,6 +263,35 @@ p { color: var(--text-secondary); }
   .topbar-logo span { font-size: 0.8rem; }
   .topbar-btn { width: 36px; height: 36px; font-size: var(--text-md); }
   .lang-toggle { font-size: 0.75rem; padding: 0 10px; }
+
+  .topbar-nav {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-xs);
+    margin: 0;
+    padding: var(--space-sm);
+    background: var(--bg-glass);
+    backdrop-filter: blur(18px) saturate(1.2);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    border-bottom: 1px solid var(--border-color);
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+  }
+  .topbar-nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .topbar-nav a { padding: 12px 16px; font-size: var(--text-md); }
+  .topbar-menu-btn { display: flex; }
   .hero { padding-top: 56px; min-height: 100svh; }
   .hero-content { padding: var(--space-xl) var(--space-md); }
   .hero h1 { font-size: clamp(1.5rem, 6vw, 2.2rem); }

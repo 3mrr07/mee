@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css?v=10">
+  <link rel="stylesheet" href="./css/style.css?v=11">
   <link rel="manifest" href="./manifest.json">
 </head>
 <body data-page="quiz">
@@ -33,7 +33,17 @@
         <img src="./img/itihad-icon.png?v=2" class="topbar-logo-img" alt="شعار اتحاد طلبة سوريا">
         <span data-i18n="nav.brand">كلية الهندسة الميكانيكية والكهربائية</span>
       </a>
+      <nav class="topbar-nav" id="topbar-nav">
+        <a href="./" data-i18n="nav.home">الرئيسية</a>
+        <a href="./#departments" data-i18n="nav.departments">الأفرع</a>
+        <a href="./guide.html" data-i18n="nav.guide">الدليل</a>
+        <a href="./quiz.html" data-i18n="nav.quiz">الاختبار</a>
+        <a href="./compare.html" data-i18n="nav.compare">المقارنة</a>
+        <a href="./union.html" data-i18n="nav.union">الهيئة</a>
+        <a href="./robotics.html" data-i18n="nav.robotics">الروبوتيك</a>
+      </nav>
       <div class="topbar-actions">
+        <button id="nav-toggle" class="topbar-btn topbar-menu-btn" onclick="toggleNavMenu()" data-i18n-attr="aria-label|nav.menu" aria-label="القائمة"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
         <button id="theme-toggle" class="topbar-btn" onclick="toggleTheme()" aria-label="الوضع الليلي">&#9790;</button>
         <button id="lang-toggle" class="topbar-btn lang-toggle" onclick="toggleLanguage()" data-i18n="lang.label">EN</button>
       </div>
@@ -103,8 +113,8 @@
   </footer>
 
   <script src="./js/site-data.js?v=8"></script>
-  <script src="./js/translations.js?v=14"></script>
+  <script src="./js/translations.js?v=15"></script>
   <script src="./js/i18n.js?v=6"></script>
-  <script src="./js/main.js?v=4"></script>
+  <script src="./js/main.js?v=5"></script>
 </body>
 </html>
